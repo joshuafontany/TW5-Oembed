@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "type": "application/json",
+  "title": "$:/plugins/joshuafontany/oembed",
+  "plugin-type": "plugin",
+  "name": "Tiddlywiki oEmbed",
+  "modified": "20200618000000000",
+  "description": "An oEmbed Client for Tiddlywiki on Node.js",
+  "dependents": "",
+  "created": "20200618000000000"
+}
