@@ -48,37 +48,27 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.parentDomNode = parent;
     this.computeAttributes();
     this.execute();
-    // Create element
+    this.target = this.embedTarget;
     // Determine what type of embed it is
-    var tag = "div",
-     url = this.embedUrl || "",
-     tiddler = this.wiki.getTiddler(this.embedTiddler);
-    if(!tiddler) {
-      // The source isn't the title of a tiddler, so we'll assume we have a Url
-      // This completes the [embed[url]] logic
-      url = this.embedTiddler;
-    } else {
+    var tag = "div", tiddler = this.wiki.getTiddler(this.embedTarget);
+    if(tiddler){
       // Check if it has a url we need
-      if(url === "" && tiddler.fields.url && tiddler.fields.url !== "") {
-        url = tiddler.fields.url;
+      if(tiddler.fields.url && tiddler.fields.url !== "") {
+        this.target = tiddler.fields.url;
       }
     }
-    if (url === "") url ="missing url";
-    // Set the <<url>> variable
-    this.setVariable("url",url);
     // Create the element and assign the attributes
-    var domNode = this.document.createElement(tag), templateTree;
-    if(this.embedClass) {
-      domNode.setAttribute("class","tc-embedded-content "+this.embedClass);		
-    } else {
-      domNode.setAttribute("class","tc-embedded-content");		
-    }
-    // Get the cookies permissions
+    var domNode = this.document.createElement(tag),
+     templateTree = [{type: "text", text: "[ext["+url+"]]"}],
+     classes = (this.embedClass.length > 0) ?
+      "tc-embedded-content "+this.embedClass : "tc-embedded-content" ;
+    domNode.setAttribute("class", classes);
+    // Get the cookies permissions from tiddlywiki/consent-banner
     var blockEmbeds = this.getVariable("tv-block-embedded-content", "yes");
     if (blockEmbeds === "yes") {
       // blocked-embed-message templateTree
       var blockedEmbedMessage = 'Blocked embedded content from<br/><a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer" tooltip="Accept cookies to unblock"><$text text=<<url>>/></a>"'
-		  templateTree = [{type: "text", text: blockedEmbedMesage}];
+		  templateTree = [{type: "text", text: blockedEmbedMessage}];
     } else {
       // component encode the url
       var dataTitle = "$:/oembed/url/"+encodeURIComponent(url);
@@ -90,7 +80,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         // Add in the message type and param, if they exist
         message.type = "oembed";
         //message.param = {};
-        message.url = url;
+        message.url = this.target;
         message.maxWidth = this.embedMaxWidth
         message.dataTitle = dataTitle;
         // This is needed for when you serve multiple wikis
@@ -109,13 +99,11 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         var response = {};
         try {
           response = JSON.parse(dataTiddler.fields.text)
+          templateTree = [{type: "text", text: response.html}];
         } catch (error) {
           console.log("Invalid JSON response to oembed request " + dataTiddler.fields.title);
           console.log(error.toString());
         }
-        templateTree = [{type: "text", text: response.html}];
-      } else {
-        templateTree = [{type: "text", text: "[ext["+url+"]]"}];
       }
     }
     // Render contents
@@ -130,10 +118,9 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
   */
   EmbedWidget.prototype.execute = function() {
     // Get our parameters
-    this.embedTiddler = this.getAttribute("tiddler");
-    this.embedUrl = this.getAttribute("url");
+    this.embedTarget = this.getAttribute("target", "");
     this.embedMaxWidth = this.getAttribute("maxwidth", "100%");
-    this.embedClass = this.getAttribute("class");
+    this.embedClass = this.getAttribute("class", "");
   };
   
   /*
@@ -141,7 +128,13 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
   */
   EmbedWidget.prototype.refresh = function(changedTiddlers) {
     var changedAttributes = this.computeAttributes();
-    if(changedAttributes.tiddler || changedAttributes.url || changedAttributes.maxwidth || changedAttributes["class"] || changedTiddlers[this.embedTiddler] || changedTiddlers[this.embedData]) {
+    var newUrl = false;
+    if (changedTiddlers[this.embedTarget]) {
+      var tiddler = this.wiki.getTiddler(this.embedTarget); 
+      if (tiddler && tiddler.fields.url !== this.target) newUrl = true;
+    }
+    if(changedAttributes.target || changedAttributes.maxwidth || changedAttributes["class"] 
+      || newUrl || changedTiddlers[this.embedData]) {
       this.refreshSelf();
       return true;
     } else {

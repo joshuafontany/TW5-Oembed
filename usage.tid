@@ -3,14 +3,16 @@ title: $:/plugins/joshuafontany/oembed/usage
 
 ! Introduction
 
-The embed widget asks the Node.js server to request an embeddable/HTML form of a user supplied url. This is done by calling the 'oembetter' node package on the server side, and then storing the returned json as a state tiddler that can be queried and transcluded by Tiddlywiki.
+The embed widget asks the Bob server to request an embeddable/HTML snippet for a user supplied url. This is done by calling the 'oembetter' node package on the server side, and then storing the returned json as a state tiddler that can be queried and transcluded by Tiddlywiki.
 
 ! Attributes
 
 
 
 |!Attribute |!Description |
-| `url` |A [[TextReference|https://tiddlywiki.com/#TextReference]] telling where to load the JSON data from and save the JSON data to. Defaults to a [[New Json Tiddler]]|
+| `target` |The name of a tiddler with a `url` field, or if a tiddler with that name is not found, a url the user wishes to embed. This allows transclusion, variables, etc.|
+| `maxwidth` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required).|
+| `class` |(Optional) The classes to add to the wrapping <div>.|
 
 
 
