@@ -1,0 +1,12 @@
+title: $:/plugins/joshuafontany/oembed/readme
+
+! oEmbed for TiddlyWiki5, Version {{$:/plugins/joshuafontany/oembed!!version}}
+
+Automatically generate embeddable html from user supplied urls. This plugin requires running TiddlyWiki on Node.js, and requires installing the 'oembetter' npm package from within your TiddlyWiki5 directory.
+
+[[oembetter|https://github.com/apostrophecms/oembetter]]
+
+[[Plugin source code|https://github.com/joshuafontany/TW5-oembed]]
+
+{{$:/plugins/joshuafontany/oembed/usage}}
+
