@@ -123,7 +123,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
   */
   EmbedWidget.prototype.execute = function() {
     // Get our parameters
-    this.embedTarget = this.getAttribute("target", this.wiki.getVariable("currentTiddler"));
+    this.embedTarget = this.getAttribute("target", this.getVariable("currentTiddler"));
     this.embedMaxWidth = this.getAttribute("maxwidth");
     this.embedClass = this.getAttribute("class", "");
 
