@@ -1,0 +1,4 @@
+title: $:/plugins/joshuafontany/oembed/scripts/embed_instagram
+tags: $:/tags/RawMarkup
+
+<script async src="//www.instagram.com/embed.js"></script>
