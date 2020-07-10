@@ -30,12 +30,15 @@ if($tw.node) {
   // Acknowledge the message.
   $tw.Bob.Shared.sendAck(data);
   // Make sure there is actually a urlEncoded sent
-  if(data.url) {
-    const prefix = data.wiki || '';
+  const prefix = data.wiki || '';
+  $tw.Bob.urls[prefix] = $tw.Bob.urls[prefix] || [];
+  if (data.url && $tw.Bob.urls[prefix].includes(data.url)) $tw.Bob.logger.log("oembed url already enqueued: "+data.url);
+  if(data.url && !$tw.Bob.urls[prefix].includes(data.url)) {
+    $tw.Bob.urls[prefix].push(data.url);
     $tw.Bob.logger.log("oembed query: " + data.url);
     $tw.Bob.oembetter.fetch(data.url, function(err, response) {
+      var success = false;
       if (!err) {
-        var success = false;
         if (response.success) success = response.success;
         else success = (response.type)? true : false;
         $tw.Bob.logger.log("oembed success: " + success);
@@ -47,18 +50,18 @@ if($tw.node) {
           responseTiddler.type = "application/json";
           responseTiddler.text = JSON.stringify(response, null, 2);
           $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
-          return true;
         } catch (error) {
           $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
           $tw.Bob.logger.log(error.toString());
-          return false;
         } 
         // thumbnail_url points to an image
         //$tw.Bob.logger.log(response.thumbnail_url);
       } else {
         $tw.Bob.logger.log("oembed error:" + err.toString());
-        return false;
+        success = false;
       }
+      $tw.Bob.urls[prefix].splice($tw.Bob.urls[prefix].indexOf(data.url), 1)
+      return success;
       });  
   }
 }

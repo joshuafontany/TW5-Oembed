@@ -34,6 +34,7 @@ exports.startup = function() {
 				{ domain: 'reddit.com', path: /\/r\/[^\/]*\/comments\/[^\/]*\/[^\/]*/,endpoint: 'https://www.reddit.com/oembed' },
 			]);
 			$tw.Bob.oembetter.endpoints(endpoints);
+			$tw.Bob.urls = $tw.Bob.urls || {};
 			  
 		} catch(e) {
 			$tw.Bob.logger.log(e.toString());

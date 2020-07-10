@@ -2,7 +2,7 @@ title: $:/plugins/joshuafontany/oembed/readme
 
 ! oEmbed for TiddlyWiki5, Version {{$:/plugins/joshuafontany/oembed!!version}}
 
-Automatically generate embeddable html from user supplied urls. This plugin requires running TiddlyWiki on Node.js with the Bob server plugin (or through Bob.ese), and requires installing the 'oembetter' npm package from within your TiddlyWiki5 directory (or cloning the 'oembetter' package locally and creating a global link by using `npm link` in the oembetter directory and `npm link oembetter` in the tiddlywiki5 directory).
+Automatically generate embeddable html from user supplied urls. This plugin requires running TiddlyWiki on Node.js with the Bob server plugin (or through Bob.exe), and requires installing the 'oembetter' npm package from within your TiddlyWiki5 directory (or cloning the 'oembetter' package locally and creating a global link by using `npm link` in the oembetter directory and `npm link oembetter` in the tiddlywiki5 directory). This plugin also requires the `tiddlywiki/consent-banner` core plugin installed in the wiki, and that the user has accepted cookies to display the embedded html code.
 
 [[oembetter|https://github.com/apostrophecms/oembetter]]
 

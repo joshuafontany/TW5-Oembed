@@ -120,7 +120,7 @@ Generates the `<$embed>` widget.
             return null;
         }
         pos = token.end;
-        node.attributes.target = {type: "string", value: (token.match[1] || "").trim()};
+        node.attributes.target = {type: "string", value: (token.match[1] || this.wiki.getVariable("currentTiddler")).trim()};
         // Update the end position
         node.end = pos;
         return node;
