@@ -17,14 +17,14 @@ This handles embed messages sent to the node process.
 exports.platforms = ["node"];
 
 if($tw.node) {
+  //const oembetter = require("oembetter")();
   $tw.nodeMessageHandlers = $tw.nodeMessageHandlers || {};
   $tw.Bob.Shared = require('$:/plugins/OokTech/Bob/SharedFunctions.js');
-  $tw.Bob.oembetter = $tw.Bob.oembetter || {};
     /*
     This handles oembed messages sent from the browser.
 
     The mesage should contain all parameters as uri-component-encoded strings.
-    The [embed[]] | <$embed/> widget will encode these strings for you.
+    The [embed[]] | <$embed/> widget will call oembetter to encode these strings for you.
   */
  $tw.nodeMessageHandlers.oembed = function(data) {
   // Acknowledge the message.
@@ -32,24 +32,32 @@ if($tw.node) {
   // Make sure there is actually a urlEncoded sent
   if(data.url) {
     const prefix = data.wiki || '';
-    $tw.Bob.logger.log("oembed query:" + url);
-    $tw.Bob.oembetter.fetch(url, {maxwidth: message.maxWidth}, function(err, response) {
+    $tw.Bob.logger.log("oembed query: " + data.url);
+    $tw.Bob.oembetter.fetch(data.url, function(err, response) {
       if (!err) {
-        $tw.Bob.logger.log("oembed type:" + response.type.toString());
-        $tw.Bob.logger.log("oembed success:" + response.success.toString());
+        var success = false;
+        if (response.success) success = response.success;
+        else success = (response.type)? true : false;
+        $tw.Bob.logger.log("oembed success: " + success);
+        $tw.Bob.logger.log("oembed type: " + response.type.toString());
         var responseTiddler = $tw.wiki.getModificationFields();
-        responseTiddler.title = message.dataTitle;
+        responseTiddler.title = data.dataTitle;
         // Parse query...
         try {
+          responseTiddler.type = "application/json";
           responseTiddler.text = JSON.stringify(response, null, 2);
           $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
-          $tw.Bob.Wikis[prefix].modified = true;
+          return true;
         } catch (error) {
-          $tw.Bob.logger.log("Invalid JSON response to oembed request " + message.dataTitle);
+          $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
           $tw.Bob.logger.log(error.toString());
+          return false;
         } 
         // thumbnail_url points to an image
         //$tw.Bob.logger.log(response.thumbnail_url);
+      } else {
+        $tw.Bob.logger.log("oembed error:" + err.toString());
+        return false;
       }
       });  
   }

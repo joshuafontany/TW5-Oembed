@@ -48,32 +48,37 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.parentDomNode = parent;
     this.computeAttributes();
     this.execute();
-    this.target = this.embedTarget;
-    // Determine what type of embed it is
-    var tag = "div", tiddler = this.wiki.getTiddler(this.embedTarget);
-    if(tiddler){
-      // Check if it has a url we need
-      if(tiddler.fields.url && tiddler.fields.url !== "") {
-        this.target = tiddler.fields.url;
-      }
-    }
-    // Create the element and assign the attributes
-    var domNode = this.document.createElement(tag),
-     templateTree = [{type: "text", text: "[ext["+url+"]]"}],
-     classes = (this.embedClass.length > 0) ?
-      "tc-embedded-content "+this.embedClass : "tc-embedded-content" ;
-    domNode.setAttribute("class", classes);
+    var tag = "div", classes = (this.embedClass.length > 0) ?
+    "tc-embedded-content "+this.embedClass : "tc-embedded-content" ;
+     // Default template is an external link to the url
+    var templateTree = [{type: "element", tag: tag, attributes: {
+       classes: {type: "string", value: classes}
+      }, children: [
+        {
+          type: "element",
+          tag: "a",
+          attributes: {
+            href: {type: "string", value: this.target},
+            "class": {type: "string", value: "tc-tiddlylink-external"},
+            target: {type: "string", value: "_blank"},
+            rel: {type: "string", value: "noopener noreferrer"}
+          },
+          children: [{
+            type: "text", text: this.target
+          }]
+        }
+      ]}];
+    // component encode the url
+    this.dataTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
     // Get the cookies permissions from tiddlywiki/consent-banner
     var blockEmbeds = this.getVariable("tv-block-embedded-content", "yes");
     if (blockEmbeds === "yes") {
       // blocked-embed-message templateTree
       var blockedEmbedMessage = 'Blocked embedded content from<br/><a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer" tooltip="Accept cookies to unblock"><$text text=<<url>>/></a>"'
-		  templateTree = [{type: "text", text: blockedEmbedMessage}];
+		  templateTree[0].children = [{type: "text", text: blockedEmbedMessage}];
     } else {
-      // component encode the url
-      var dataTitle = "$:/oembed/url/"+encodeURIComponent(url);
       // get the data tiddler
-      var dataTiddler = this.wiki.getTiddler(dataTitle);
+      var dataTiddler = this.wiki.tiddlerExists(this.dataTitle);
       if (!dataTiddler && $tw.Bob.Shared) {
         // Create the empty message object
         let message = {};
@@ -82,7 +87,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         //message.param = {};
         message.url = this.target;
         message.maxWidth = this.embedMaxWidth
-        message.dataTitle = dataTitle;
+        message.dataTitle = this.dataTitle;
         // This is needed for when you serve multiple wikis
         const wikiName = $tw.wiki.getTiddlerText("$:/WikiName");
         message.wiki = wikiName?wikiName:'';
@@ -92,25 +97,25 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         if(message.type) {
           // send web-socket request
           $tw.Bob.Shared.sendMessage(message, 0)
-          console.log("Requesting oembed data for " + dataTitle)
+          console.log("Requesting oembed data for " + this.dataTitle)
         }        
       } else if (dataTiddler) {
         // use the response
         var response = {};
         try {
-          response = JSON.parse(dataTiddler.fields.text)
-          templateTree = [{type: "text", text: response.html}];
+          var path = "html";
+          templateTree[0].children = [{type: "transclude", attributes: {
+            tiddler: {type: "string", value: this.dataTitle},
+            index: {type: "string", value: path}}}];
         } catch (error) {
-          console.log("Invalid JSON response to oembed request " + dataTiddler.fields.title);
+          console.log("Invalid JSON response to oembed request " + this.dataTitle);
           console.log(error.toString());
         }
       }
     }
     // Render contents
     this.makeChildWidgets(templateTree);
-    // Insert element
-    parent.insertBefore(domNode,nextSibling);
-    this.domNodes.push(domNode);
+    this.renderChildren(this.parentDomNode,null);
   };
   
   /*
@@ -121,6 +126,16 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.embedTarget = this.getAttribute("target", "");
     this.embedMaxWidth = this.getAttribute("maxwidth", "100%");
     this.embedClass = this.getAttribute("class", "");
+
+    this.target = this.embedTarget;
+    // Determine what type of embed it is
+    var tiddler = this.wiki.getTiddler(this.embedTarget);
+    if(tiddler){
+      // Check if it has a url we need
+      if(tiddler.fields.url && tiddler.fields.url !== "") {
+        this.target = tiddler.fields.url;
+      }
+    }
   };
   
   /*
@@ -134,7 +149,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       if (tiddler && tiddler.fields.url !== this.target) newUrl = true;
     }
     if(changedAttributes.target || changedAttributes.maxwidth || changedAttributes["class"] 
-      || newUrl || changedTiddlers[this.embedData]) {
+      || newUrl || changedTiddlers[this.dataTitle]) {
       this.refreshSelf();
       return true;
     } else {
