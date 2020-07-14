@@ -52,7 +52,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     "tc-embedded-content "+this.embedClass : "tc-embedded-content" ;
      // Default template is an external link to the url
     var templateTree = [{type: "element", tag: tag, attributes: {
-       classes: {type: "string", value: classes}
+       class: {type: "string", value: classes}
       }, children: [
         {
           type: "element",
@@ -78,8 +78,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
 		  templateTree[0].children = [{type: "text", text: blockedEmbedMessage}];
     } else {
       // get the data tiddler
-      var dataTiddler = this.wiki.tiddlerExists(this.dataTitle);
-      if (!dataTiddler && $tw.Bob.Shared) {
+      var dataExists = this.wiki.tiddlerExists(this.dataTitle);
+      if (!dataExists && $tw.Bob.Shared) {
         // Create the empty message object
         let message = {};
         // Add in the message type and param, if they exist
@@ -99,14 +99,32 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
           $tw.Bob.Shared.sendMessage(message, 0)
           console.log("Requesting oembed data for " + this.dataTitle)
         }        
-      } else if (dataTiddler) {
+      } else if (dataExists) {
+        var tiddler = this.wiki.getTiddler(this.dataTitle);
         // use the response
-        var response = {};
+        var response = (tiddler.fields.type === "application/json") ? JSON.parse(tiddler.fields.text) : {html: "Invalid response type, not 'application/json'."};
         try {
-          var path = "html";
-          templateTree[0].children = [{type: "transclude", attributes: {
-            tiddler: {type: "string", value: this.dataTitle},
-            index: {type: "string", value: path}}}];
+          var embed = '<html><head></head><body>';
+          if (response["provider_url"] && response["provider_url"] === "https://www.facebook.com"){
+            embed = embed+'<div id="fb-root"></div><script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>';
+            embed = embed+response["html"];
+            embed = embed+"</body></html>";
+          } else if (response["provider_url"] && response["provider_url"] === "https://www.instagram.com"){
+            embed = embed+response["html"];
+            embed = embed+'<script async defer src="https://www.instagram.com/static/bundles/es6/EmbedSDK.js/bf4a12bd69f3.js"></script>';
+            embed = embed+"</body></html>";
+          } else {
+            embed = embed+response["html"]+"</body></html>";
+          }
+          
+          templateTree[0].children = [{
+            type: "element",
+            tag: "iframe",
+            attributes: {
+              srcdoc: {type: "string", value: embed},
+              sandbox: {type: "string", value: "allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"}
+            }
+          }];
         } catch (error) {
           console.log("Invalid JSON response to oembed request " + this.dataTitle);
           console.log(error.toString());

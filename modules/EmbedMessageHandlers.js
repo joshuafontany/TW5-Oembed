@@ -32,11 +32,19 @@ if($tw.node) {
   // Make sure there is actually a urlEncoded sent
   const prefix = data.wiki || '';
   $tw.Bob.urls[prefix] = $tw.Bob.urls[prefix] || [];
+  var options = {};
   if (data.url && $tw.Bob.urls[prefix].includes(data.url)) $tw.Bob.logger.log("oembed url already enqueued: "+data.url);
   if(data.url && !$tw.Bob.urls[prefix].includes(data.url)) {
     $tw.Bob.urls[prefix].push(data.url);
     $tw.Bob.logger.log("oembed query: " + data.url);
-    $tw.Bob.oembetter.fetch(data.url, function(err, response) {
+    if (data.maxWidth) options.maxwidth = data.maxWidth;
+    //Provider specific options
+    if (data.url.match(/.facebook.com/)
+      || data.url.match(/.instagram.com/)) {
+      options.omitscript = true;
+    }
+    //Fetch
+    $tw.Bob.oembetter.fetch(data.url, options, function(err, response) {
       var success = false;
       if (!err) {
         if (response.success) success = response.success;
