@@ -49,37 +49,93 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.computeAttributes();
     this.execute();
     var tag = "div", classes = (this.embedClass.length > 0) ?
-    "tc-embedded-content "+this.embedClass : "tc-embedded-content" ;
+    this.embedClass+" tc-embedded-content" : "tc-embedded-content" ;
      // Default template is an external link to the url
-    var templateTree = [{type: "element", tag: tag, attributes: {
-       class: {type: "string", value: classes}
-      }, children: [
-        {
-          type: "element",
-          tag: "a",
-          attributes: {
-            href: {type: "string", value: this.target},
-            "class": {type: "string", value: "tc-tiddlylink-external"},
-            target: {type: "string", value: "_blank"},
-            rel: {type: "string", value: "noopener noreferrer"}
+    var templateTree = [
+      {
+        type: "element", tag: "p", attributes: {
+          class: {type: "string", value: "tc-embedded-link"}
+        }, 
+        children: [
+          {
+            type: "transclude",
+            attributes: {
+              tiddler: {type: "string", value: "$:/core/images/link"}
+            }
           },
-          children: [{
-            type: "text", text: this.target
-          }]
-        }
-      ]}];
-    // component encode the url
-    this.dataTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
+          {
+            type: "element",
+            tag: "a",
+            attributes: {
+              href: {type: "string", value: this.target},
+              "class": {type: "string", value: "tc-tiddlylink-external"},
+              target: {type: "string", value: "_blank"},
+              rel: {type: "string", value: "noopener noreferrer"}
+            },
+            children: [{
+              type: "text", text: this.target
+            }]
+          }
+        ]
+      },
+      {
+        type: "element", tag: tag, attributes: {
+          class: {type: "string", value: classes}
+        }, 
+        children: []
+      }
+    ];
     // Get the cookies permissions from tiddlywiki/consent-banner
     var blockEmbeds = this.getVariable("tv-block-embedded-content", "yes");
     if (blockEmbeds === "yes") {
       // blocked-embed-message templateTree
-      var blockedEmbedMessage = 'Blocked embedded content from<br/><a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer" tooltip="Accept cookies to unblock"><$text text=<<url>>/></a>"'
-		  templateTree[0].children = [{type: "text", text: blockedEmbedMessage}];
+		  templateTree[1].children = [{
+        type: "transclude", 
+        attributes: {
+          tiddler: {type: "string", value: "$:/config/plugins/tiddlywiki/consent-banner/blocked-embed-message"}
+        }
+      }];
     } else {
       // get the data tiddler
-      var dataExists = this.wiki.tiddlerExists(this.dataTitle);
-      if (!dataExists && $tw.Bob.Shared) {
+      var stateExists = this.wiki.tiddlerExists(this.stateTitle);
+      if (!stateExists && !$tw.Bob) {
+        /**
+         * Creates a RegExp from the given string, converting asterisks to .* expressions,
+         * and escaping all other characters.
+         */
+        function wildcardToRegExp (s) {
+          return new RegExp('^' + s.split(/\*+/).map(regExpEscape).join('.*') + '$');
+        }
+        /**
+         * RegExp-escapes all characters in the given string.
+         */
+        function regExpEscape (s) {
+          return s.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+        }
+        var requestUrl, providers = JSON.parse($tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/providers/oembed"));
+        providers.forEach(function(provider){
+          for (let e = 0; e < provider.endpoints.length; e++) {
+            const endpoint = provider.endpoints[e];
+            for (let s = 0; s < endpoint.schemas.length; s++) {
+              const schema = endpoint.schemas[s];
+              if (this.target.match(wildcardToRegExp(schema))) {
+                requestUrl = endpoint.url
+                break;
+              }
+            }
+            if (requestUrl) break;
+          }
+        });
+        
+        this.setVariable("requestUrl", requestUrl);
+        // manual embed templateTree
+        templateTree[1].children = [{
+          type: "transclude", 
+          attributes: {
+            tiddler: {type: "string", value: "$:/plugins/joshuafontany/oembed/manual-embed"}
+          }
+        }];
+      } else if (!stateExists && $tw.Bob) {
         // Create the empty message object
         let message = {};
         // Add in the message type and param, if they exist
@@ -87,7 +143,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         //message.param = {};
         message.url = this.target;
         message.maxWidth = this.embedMaxWidth
-        message.dataTitle = this.dataTitle;
+        message.dataTitle = this.stateTitle;
         // This is needed for when you serve multiple wikis
         const wikiName = $tw.wiki.getTiddlerText("$:/WikiName");
         message.wiki = wikiName?wikiName:'';
@@ -97,36 +153,65 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         if(message.type) {
           // send web-socket request
           $tw.Bob.Shared.sendMessage(message, 0)
-          console.log("Requesting oembed data for " + this.dataTitle)
+          console.log("Requesting oembed for " + this.stateTitle)
         }        
-      } else if (dataExists) {
-        var tiddler = this.wiki.getTiddler(this.dataTitle);
-        // use the response
-        var response = (tiddler.fields.type === "application/json") ? JSON.parse(tiddler.fields.text) : {html: "Invalid response type, not 'application/json'."};
+      } else if (stateExists) {
+        var tiddler = this.wiki.getTiddler(this.stateTitle);
         try {
-          var embed = '<html><head></head><body>';
-          if (response["provider_url"] && response["provider_url"] === "https://www.facebook.com"){
-            embed = embed+'<div id="fb-root"></div><script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>';
-            embed = embed+response["html"];
-            embed = embed+"</body></html>";
-          } else if (response["provider_url"] && response["provider_url"] === "https://www.instagram.com"){
-            embed = embed+response["html"];
-            embed = embed+'<script async defer src="https://www.instagram.com/static/bundles/es6/EmbedSDK.js/bf4a12bd69f3.js"></script>';
-            embed = embed+"</body></html>";
+          // use the response
+          var response = JSON.parse(tiddler.fields.text);
+          if(false) { //if(response["html"].match(/(?:^<iframe|^<video)/)) {
+            var parsed = $tw.wiki.parseText("text/html", response["html"], {});
+            templateTree[1].children = parsed.tree;
           } else {
-            embed = embed+response["html"]+"</body></html>";
-          }
-          
-          templateTree[0].children = [{
-            type: "element",
-            tag: "iframe",
-            attributes: {
-              srcdoc: {type: "string", value: embed},
-              sandbox: {type: "string", value: "allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"}
+            if (response["html"]) {
+              var iframeStyles = $tw.wiki.parseText("text/vnd.tiddlywiki", $tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body"));
+              var embed = '<html><head><style>'+iframeStyles+'</style></head><body><div class="contents">';
+              if (response["provider_url"] && response["provider_url"] === "https://www.facebook.com"){
+                embed = embed+'<div id="fb-root"></div>';
+                embed = embed+response["html"];
+                embed = embed+"</body></html>";
+              } else {
+                embed = embed+response["html"]+"</div></body></html>";
+              }
+            } else {
+              embed = JSON.stringify(response, null, 2);
             }
-          }];
+            templateTree[1].children =  [{
+              type: "element",
+              tag: "iframe",
+              attributes: {
+                srcdoc: {type: "string", value: embed},
+                sandbox: {type: "string", value: "allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"}
+              }
+            }];
+            classes = classes + " tc-embedded-responsive";
+          }
+          if (response["width"] && response["height"]) {
+            var aspectClass, aspect = parseInt(0 + response["height"]) / parseInt( 0 + response["width"]) * 100;
+            switch (true) {
+              case Math.floor(aspect) == 0: aspectClass = "tc-embedded-default";                
+                break;
+              case Math.floor(aspect) <= 56: aspectClass = "tc-embedded-16-9";                
+                break;
+              case Math.floor(aspect) <= 62: aspectClass = "tc-embedded-8-5"                
+                break;
+              case Math.floor(aspect) <= 66: aspectClass = "tc-embedded-3-2"                
+                break;
+              case Math.floor(aspect) <= 75: aspectClass = "tc-embedded-4-3"                
+                break;
+              case Math.floor(aspect) <= 100: aspectClass = "tc-embedded-1-1"                
+                break;
+              default: aspectClass = "tc-embedded-default";
+                break;
+            }
+            if(aspectClass) classes = classes + " "+ aspectClass;
+          } else if (response["width"] && !response["height"]) {
+            classes = classes + " "+ "tc-embedded-default";
+          }
+          templateTree[1].attributes["class"].value = classes;
         } catch (error) {
-          console.log("Invalid JSON response to oembed request " + this.dataTitle);
+          console.log("Invalid JSON response to oembed request " + this.stateTitle);
           console.log(error.toString());
         }
       }
@@ -154,6 +239,10 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         this.target = tiddler.fields.url;
       }
     }
+    // component encode the url
+    this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
+    this.setVariable("url", this.target);
+    this.setVariable("stateTiddler", this.stateTitle);
   };
   
   /*
@@ -167,7 +256,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       if (tiddler && tiddler.fields.url !== this.target) newUrl = true;
     }
     if(changedAttributes.target || changedAttributes.maxwidth || changedAttributes["class"] 
-      || newUrl || changedTiddlers[this.dataTitle]) {
+      || newUrl || changedTiddlers[this.stateTitle]) {
       this.refreshSelf();
       return true;
     } else {

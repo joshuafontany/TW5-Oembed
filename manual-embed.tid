@@ -1,0 +1,19 @@
+tags: 
+title: $:/plugins/joshuafontany/oembed/manual-embed
+
+\define saveState()
+<$action-setfield tiddler=<<stateTitle>> field="type" value="application/json" />
+<$action-setfield tiddler=<<stateTitle>> field="text" value={{$:/state/oembed/manual-request}} />
+\end
+<$set name="request" filter="[encodeuricomponent<url>addprefix[?url=]addprefix<requestUrl>]">
+
+''Request'': <a href=<<request>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<request>>/></a>
+
+<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" />
+
+<$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveSate>> >Save!</$button>
+
+* Click the ''Request'' link.
+* Copy and paste the response Json into the stateTiddler input. 
+* Then click Save!
+</$set>

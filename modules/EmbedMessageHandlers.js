@@ -39,20 +39,16 @@ if($tw.node) {
     $tw.Bob.logger.log("oembed query: " + data.url);
     if (data.maxWidth) options.maxwidth = data.maxWidth;
     //Provider specific options
-    if (data.url.match(/.facebook.com/)
-      || data.url.match(/.instagram.com/)) {
-      options.omitscript = true;
-    }
     //Fetch
     $tw.Bob.oembetter.fetch(data.url, options, function(err, response) {
       var success = false;
+      var responseTiddler = $tw.wiki.getModificationFields();
+      responseTiddler.title = data.dataTitle;
       if (!err) {
         if (response.success) success = response.success;
         else success = (response.type)? true : false;
         $tw.Bob.logger.log("oembed success: " + success);
         $tw.Bob.logger.log("oembed type: " + response.type.toString());
-        var responseTiddler = $tw.wiki.getModificationFields();
-        responseTiddler.title = data.dataTitle;
         // Parse query...
         try {
           responseTiddler.type = "application/json";
@@ -61,12 +57,19 @@ if($tw.node) {
         } catch (error) {
           $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
           $tw.Bob.logger.log(error.toString());
+          var responseError = {success: success, error: error, response: response};
+          responseTiddler.type = "application/json";
+          responseTiddler.text = JSON.stringify(responseError, null, 2);
+          $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
         } 
         // thumbnail_url points to an image
         //$tw.Bob.logger.log(response.thumbnail_url);
       } else {
         $tw.Bob.logger.log("oembed error:" + err.toString());
-        success = false;
+        var responseError = {success: success, error: error, response: response};
+        responseTiddler.type = "application/json";
+        responseTiddler.text = JSON.stringify(response, null, 2);
+        $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix)
       }
       $tw.Bob.urls[prefix].splice($tw.Bob.urls[prefix].indexOf(data.url), 1)
       return success;

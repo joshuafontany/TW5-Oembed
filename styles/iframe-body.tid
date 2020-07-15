@@ -1,0 +1,18 @@
+title: $:/plugins/joshuafontany/oembed/styles/iframe-body
+type: text/vnd.tiddlywiki
+
+body {
+  background-color: <<color primary>>;
+  padding: 8px;
+  scrollbar-width: thin;
+  scrollbar-3dlight-color: #000000;
+  scrollbar-arrow-color: #ffffff;
+  scrollbar-darkshadow-color: #000000;
+  scrollbar-face-color: #000000;
+  scrollbar-highlight-color: #ffffff;
+  scrollbar-shadow-color: #ffffff;
+  scrollbar-track-color: #000000;
+}
+.contents {
+  background-color: #ffffff;
+}
