@@ -1,9 +1,13 @@
-title: $:/plugins/joshuafontany/oembed/styles/oembed
+title: $:/plugins/joshuafontany/oembed/styles/tc-embedded
 tags: [[$:/tags/Stylesheet]]
 
 .tc-embedded-link > svg {
   height: 1.2em;
   width: 1.2em;
+}
+
+.tc-embedded {
+  border: {{$:/plugins/joshuafontany/oembed/config/styles##border}};
 }
 
 .tc-embedded-responsive {
@@ -15,8 +19,6 @@ tags: [[$:/tags/Stylesheet]]
   position: absolute;
   top: 0;
   left: 0;
-  border-width: 2px;
-  border-color: <<colour primary>>;
   width: 100%;
   height: 100%;
 }

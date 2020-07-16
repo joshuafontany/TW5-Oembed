@@ -49,7 +49,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.computeAttributes();
     this.execute();
     var tag = "div", classes = (this.embedClass.length > 0) ?
-    this.embedClass+" tc-embedded-content" : "tc-embedded-content" ;
+    this.embedClass+" tc-embedded" : "tc-embedded" ;
      // Default template is an external link to the url
     var templateTree = [
       {
@@ -160,20 +160,24 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         try {
           // use the response
           var response = JSON.parse(tiddler.fields.text);
-          if(false) { //if(response["html"].match(/(?:^<iframe|^<video)/)) {
+          if(response["html"].match(/(?:^<iframe)/)) {
             var parsed = $tw.wiki.parseText("text/html", response["html"], {});
-            templateTree[1].children = parsed.tree;
+            templateTree[1].children = [ {
+              type: "transclude",
+              attributes: {
+                tiddler: {type: "string", value: this.stateTitle},
+                index: {type: "string", value: "html"}
+              }
+            }];
           } else {
             if (response["html"]) {
-              var iframeStyles = $tw.wiki.parseText("text/vnd.tiddlywiki", $tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body"));
+              var iframeStyles = $tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
               var embed = '<html><head><style>'+iframeStyles+'</style></head><body><div class="contents">';
               if (response["provider_url"] && response["provider_url"] === "https://www.facebook.com"){
                 embed = embed+'<div id="fb-root"></div>';
-                embed = embed+response["html"];
-                embed = embed+"</body></html>";
-              } else {
-                embed = embed+response["html"]+"</div></body></html>";
-              }
+              } 
+              embed = embed+response["html"];
+              embed = embed+"</div></body></html>";
             } else {
               embed = JSON.stringify(response, null, 2);
             }

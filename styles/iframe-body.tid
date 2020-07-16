@@ -1,8 +1,7 @@
 title: $:/plugins/joshuafontany/oembed/styles/iframe-body
-type: text/vnd.tiddlywiki
+type:
 
 body {
-  background-color: <<color primary>>;
   padding: 8px;
   scrollbar-width: thin;
   scrollbar-3dlight-color: #000000;

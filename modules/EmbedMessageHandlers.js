@@ -56,20 +56,14 @@ if($tw.node) {
           $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
         } catch (error) {
           $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
-          $tw.Bob.logger.log(error.toString());
           var responseError = {success: success, error: error, response: response};
-          responseTiddler.type = "application/json";
-          responseTiddler.text = JSON.stringify(responseError, null, 2);
-          $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
+          $tw.Bob.logger.log(error.toString());
         } 
         // thumbnail_url points to an image
         //$tw.Bob.logger.log(response.thumbnail_url);
       } else {
-        $tw.Bob.logger.log("oembed error:" + err.toString());
-        var responseError = {success: success, error: error, response: response};
-        responseTiddler.type = "application/json";
-        responseTiddler.text = JSON.stringify(response, null, 2);
-        $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix)
+        var responseError = {success: success, error: err, response: response};
+        $tw.Bob.logger.log("oembed error:" + responseError.toString());
       }
       $tw.Bob.urls[prefix].splice($tw.Bob.urls[prefix].indexOf(data.url), 1)
       return success;
