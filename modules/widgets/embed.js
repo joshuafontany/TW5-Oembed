@@ -31,6 +31,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
   "use strict";
   
   var Widget = require("$:/core/modules/widgets/widget.js").widget;
+  if($tw.node) var urls = require('url');
   
   var EmbedWidget = function(parseTreeNode,options) {
     this.initialise(parseTreeNode,options);
@@ -49,37 +50,18 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.computeAttributes();
     this.execute();
     var tag = "div", classes = (this.embedClass.length > 0) ?
-    this.embedClass+" tc-embedded" : "tc-embedded" ;
+    this.embedClass+" tc-embedded tc-embedded-responsive" : "tc-embedded tc-embedded-responsive" ;
      // Default template is an external link to the url
     var templateTree = [
       {
-        type: "element", tag: "p", attributes: {
-          class: {type: "string", value: "tc-embedded-link"}
-        }, 
-        children: [
-          {
-            type: "transclude",
-            attributes: {
-              tiddler: {type: "string", value: "$:/core/images/link"}
-            }
-          },
-          {
-            type: "element",
-            tag: "a",
-            attributes: {
-              href: {type: "string", value: this.target},
-              "class": {type: "string", value: "tc-tiddlylink-external"},
-              target: {type: "string", value: "_blank"},
-              rel: {type: "string", value: "noopener noreferrer"}
-            },
-            children: [{
-              type: "text", text: this.target
-            }]
-          }
-        ]
+        type: "transclude", 
+        attributes: {
+          tiddler: {type: "string", value: "$:/plugins/joshuafontany/oembed/embed-link"}
+        }
       },
       {
-        type: "element", tag: tag, attributes: {
+        type: "element", tag: tag, 
+        attributes: {
           class: {type: "string", value: classes}
         }, 
         children: []
@@ -99,35 +81,16 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       // get the data tiddler
       var stateExists = this.wiki.tiddlerExists(this.stateTitle);
       if (!stateExists && !$tw.Bob) {
-        /**
-         * Creates a RegExp from the given string, converting asterisks to .* expressions,
-         * and escaping all other characters.
-         */
-        function wildcardToRegExp (s) {
-          return new RegExp('^' + s.split(/\*+/).map(regExpEscape).join('.*') + '$');
-        }
-        /**
-         * RegExp-escapes all characters in the given string.
-         */
-        function regExpEscape (s) {
-          return s.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
-        }
-        var requestUrl, providers = JSON.parse($tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/providers/oembed"));
-        providers.forEach(function(provider){
-          for (let e = 0; e < provider.endpoints.length; e++) {
-            const endpoint = provider.endpoints[e];
-            for (let s = 0; s < endpoint.schemas.length; s++) {
-              const schema = endpoint.schemas[s];
-              if (this.target.match(wildcardToRegExp(schema))) {
-                requestUrl = endpoint.url
-                break;
-              }
-            }
-            if (requestUrl) break;
+        var requestEndpoint;
+        for (let e = 0; e < $tw.oembed.endpoints.length; e++) {
+          var endpoint = $tw.oembed.endpoints[e];
+          if (endpoint.domain === this.requestURL.hostname && this.requestURL.pathname.match(endpoint.path)) {
+            requestEndpoint = endpoint.endpoint;
           }
-        });
+          if (requestEndpoint) break;
+        }
         
-        this.setVariable("requestUrl", requestUrl);
+        this.setVariable("requestEndpoint", requestEndpoint);
         // manual embed templateTree
         templateTree[1].children = [{
           type: "transclude", 
@@ -145,7 +108,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         message.maxWidth = this.embedMaxWidth
         message.dataTitle = this.stateTitle;
         // This is needed for when you serve multiple wikis
-        const wikiName = $tw.wiki.getTiddlerText("$:/WikiName");
+        const wikiName = this.wiki.getTiddlerText("$:/WikiName");
         message.wiki = wikiName?wikiName:'';
         const token = localStorage.getItem('ws-token');
         message["token"] = token;
@@ -160,8 +123,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         try {
           // use the response
           var response = JSON.parse(tiddler.fields.text);
-          if(response["html"].match(/(?:^<iframe)/)) {
-            var parsed = $tw.wiki.parseText("text/html", response["html"], {});
+          if(response["html"] && response["html"].match(/(?:^<iframe)/)) {
             templateTree[1].children = [ {
               type: "transclude",
               attributes: {
@@ -171,11 +133,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
             }];
           } else {
             if (response["html"]) {
-              var iframeStyles = $tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
+              var iframeStyles = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
               var embed = '<html><head><style>'+iframeStyles+'</style></head><body><div class="contents">';
-              if (response["provider_url"] && response["provider_url"] === "https://www.facebook.com"){
-                embed = embed+'<div id="fb-root"></div>';
-              } 
               embed = embed+response["html"];
               embed = embed+"</div></body></html>";
             } else {
@@ -189,7 +148,6 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
                 sandbox: {type: "string", value: "allow-same-origin allow-scripts allow-popups allow-forms allow-presentation"}
               }
             }];
-            classes = classes + " tc-embedded-responsive";
           }
           if (response["width"] && response["height"]) {
             var aspectClass, aspect = parseInt(0 + response["height"]) / parseInt( 0 + response["width"]) * 100;
@@ -243,9 +201,12 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         this.target = tiddler.fields.url;
       }
     }
-    // component encode the url
+    //Parse the URL
+    this.requestURL = ($tw.node)? urls.parse(this.target): new URL(this.target);
+    // component encode the url for the stateTitle
     this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
     this.setVariable("url", this.target);
+    this.setVariable("urlDomain", this.requestURL.hostname);
     this.setVariable("stateTiddler", this.stateTitle);
   };
   
