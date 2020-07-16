@@ -1,11 +1,18 @@
 tags: 
 title: $:/plugins/joshuafontany/oembed/embed-link
 
-\define emptyIcon() <$transclude tiddler="$:/core/images/link"/>
+\define emptyIcon()
+<$transclude tiddler="$:/core/images/link"/>
+\end
 
-<p class="tc-embedded-link">
-    <$list filter="[<urlDomain>then[]]" emptyMessage=<<emptyIcon>> />
+<div class="tc-embedded-link">
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <title><<urlDomain>></title>
+        <$list variable="icon" filter="[<urlDomain>] -[<urlDomain>]" emptyMessage=<<emptyIcon>> >
+            <$transclude tiddler="$:/core/images/globe"/>
+        </$list>
+    </svg>
     <a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">
-    <$text text=<<url>> />
+        <$text text=<<url>> />
     </a>
-</p>
+</div>

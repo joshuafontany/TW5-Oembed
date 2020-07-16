@@ -53,7 +53,7 @@ if($tw.node) {
         try {
           responseTiddler.type = "application/json";
           responseTiddler.text = JSON.stringify(response, null, 2);
-          $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
+          $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix, data.source_connection);
         } catch (error) {
           $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
           var responseError = {success: success, error: error, response: response};

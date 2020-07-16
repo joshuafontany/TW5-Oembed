@@ -1,0 +1,7 @@
+title: $:/plugins/joshuafontany/oembed/not-whitelisted-message
+
+Unable to request embedded content from<br/><a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<url>>/></a>
+
+<hr/>
+
+The domain for ''<<urlDomain>>'' is not whitelisted in [[$:/plugins/joshuafontany/oembed/config/whitelist]]. 

@@ -2,7 +2,6 @@ title: $:/plugins/joshuafontany/oembed/styles/iframe-body
 type:
 
 body {
-  padding: 8px;
   scrollbar-width: thin;
   scrollbar-3dlight-color: #000000;
   scrollbar-arrow-color: #ffffff;
@@ -13,5 +12,6 @@ body {
   scrollbar-track-color: #000000;
 }
 .contents {
+  margin: 5px 10px;
   background-color: #ffffff;
 }

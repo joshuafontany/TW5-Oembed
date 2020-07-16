@@ -2,17 +2,17 @@ tags:
 title: $:/plugins/joshuafontany/oembed/manual-embed
 
 \define saveState()
-<$action-setfield tiddler=<<stateTitle>> field="type" value="application/json" />
-<$action-setfield tiddler=<<stateTitle>> field="text" value={{$:/state/oembed/manual-request}} />
-<action-setfield tiddler="$:/state/oembed/manual-request" field="text" />
+<$action-setfield $tiddler=<<stateTitle>> $field="type" $value="application/json" />
+<$action-setfield $tiddler=<<stateTitle>> $field="text" $value={{$:/state/oembed/manual-request}} />
+<$action-setfield $tiddler="$:/state/oembed/manual-request" $field="text" />
 \end
-<$set name="request" filter="[<url>encodeuricomponent[]]addprefix[?url=]addprefix<requestEndpoint>]">
+<$set name="request" filter="[<url>encodeuricomponent[]addprefix[?url=]addprefix<requestEndpoint>]">
 
-''Request Oembed from <<urlDomain>>'': 
+''Request Oembed from:'' <<urlDomain>>
 
 <a href=<<request>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<request>>/></a>
 
-<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" />
+<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" size="128" autoHeight="no" rows="10" />
 
 <$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveSate>> >Save!</$button>
 

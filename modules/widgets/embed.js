@@ -77,20 +77,18 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
           tiddler: {type: "string", value: "$:/config/plugins/tiddlywiki/consent-banner/blocked-embed-message"}
         }
       }];
+    } else if(this.requestEndpoint === "") {
+      // not-whitelisted-message templateTree
+		  templateTree[1].children = [{
+        type: "transclude", 
+        attributes: {
+          tiddler: {type: "string", value: "$:/plugins/joshuafontany/oembed/not-whitelisted-message"}
+        }
+      }];
     } else {
       // get the data tiddler
       var stateExists = this.wiki.tiddlerExists(this.stateTitle);
       if (!stateExists && !$tw.Bob) {
-        var requestEndpoint;
-        for (let e = 0; e < $tw.oembed.endpoints.length; e++) {
-          var endpoint = $tw.oembed.endpoints[e];
-          if (endpoint.domain === this.requestURL.hostname && this.requestURL.pathname.match(endpoint.path)) {
-            requestEndpoint = endpoint.endpoint;
-          }
-          if (requestEndpoint) break;
-        }
-        
-        this.setVariable("requestEndpoint", requestEndpoint);
         // manual embed templateTree
         templateTree[1].children = [{
           type: "transclude", 
@@ -203,6 +201,16 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     }
     //Parse the URL
     this.requestURL = ($tw.node)? urls.parse(this.target): new URL(this.target);
+    this.requestEndpoint = "";
+        for (let e = 0; e < $tw.oembed.endpoints.length; e++) {
+          var endpoint = $tw.oembed.endpoints[e];
+          var domainMatch = (this.requestURL.hostname.indexOf(endpoint.domain) !== -1);
+          if (domainMatch && this.requestURL.pathname.match(endpoint.path)) {
+            this.requestEndpoint = endpoint.endpoint;
+          }
+          if (this.requestEndpoint !== "") break;
+        }
+    this.setVariable("requestEndpoint", this.requestEndpoint);
     // component encode the url for the stateTitle
     this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
     this.setVariable("url", this.target);
