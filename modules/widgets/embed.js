@@ -86,6 +86,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         }
       }];
     } else {
+      //find out where we are served from
+      var protocol = this.wiki.getTiddlerText("$:/info/url/protocol")
       // get the data tiddler
       var stateExists = this.wiki.tiddlerExists(this.stateTitle);
       if (!stateExists && !$tw.Bob) {
@@ -119,9 +121,16 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       } else if (stateExists) {
         var tiddler = this.wiki.getTiddler(this.stateTitle);
         try {
+          //find out if we are a local file on `file:` protocol
+          var response, responseHTML;
           // use the response
-          var response = JSON.parse(tiddler.fields.text);
-          if(response["html"] && response["html"].match(/(?:^<iframe)/)) {
+          response = JSON.parse(tiddler.fields.text);
+          if(protocol === "file:"){
+            responseHTML = response["html"].replace(/(?<=<script.+?)(src="\/\/)(?=.*?>)/g, 'src="http:\/\/');
+          } else {
+            responseHTML = response["html"];
+          }
+          if(responseHTML && responseHTML.match(/(?:^<iframe)/)) {
             templateTree[1].children = [ {
               type: "transclude",
               attributes: {
@@ -130,11 +139,16 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
               }
             }];
           } else {
-            if (response["html"]) {
+            if (responseHTML) {
               var iframeStyles = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
-              var embed = '<html><head><style>'+iframeStyles+'</style></head><body><div class="contents">';
-              embed = embed+response["html"];
-              embed = embed+"</div></body></html>";
+              if (protocol === "file:" 
+                && response["provider_name" === "Facebook"]
+                && response["type"] === "video") {
+                  iframeStyle += this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/local-fb-video-fix");
+                }
+              var embed = '<html><head><style>'+iframeStyles+'</style></head><body>';
+              embed = embed+responseHTML;
+              embed = embed+"</body></html>";
             } else {
               embed = JSON.stringify(response, null, 2);
             }
@@ -215,7 +229,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
     this.setVariable("url", this.target);
     this.setVariable("urlDomain", this.requestURL.hostname);
-    this.setVariable("stateTiddler", this.stateTitle);
+    this.setVariable("stateTitle", this.stateTitle);
   };
   
   /*

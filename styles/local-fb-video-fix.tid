@@ -1,0 +1,16 @@
+title: $:/plugins/joshuafontany/oembed/styles/local-fb-video-fix
+type:
+
+
+/* This CSS fixes a Chrome rendering error that hides 
+  Facebook Videos when loaded from a "file:///" domain.
+  The $embed widget handles the logic to apply thi. */
+
+.fb-video > span {
+  height: unset !important;
+}
+
+.fb-video > span > iframe {
+  height: unset !important;
+  width: unset !important;
+}

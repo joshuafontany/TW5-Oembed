@@ -63,18 +63,18 @@ exports.startup = function() {
 	if($tw.node) {
 		if(!$tw.modules.titles["$:/plugins/OokTech/Bob/ServerSide.js"]) {
 			$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the 'OokTech/Bob' plugin to be installed when running on node.js.");
+		} else { 
+			try {
+				$tw.Bob.oembetter = require("oembetter")();
+				$tw.Bob.oembetter.whitelist(whitelist);
+				$tw.Bob.oembetter.endpoints(endpoints);
+				//$tw.Bob.oembetter.after = []; //clear old fb video filter
+				$tw.Bob.urls = $tw.Bob.urls || {};
+			} catch(e) {
+				$tw.Bob.logger.log(e.toString());
+				$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the oembetter node package to be installed. Run 'npm install oembetter' in the root of the TiddlyWiki repository, or clone oembetter and run 'npm link' from that directory to create a global link.");
+			}
 		}
-		try {
-			$tw.Bob.oembetter = require("oembetter")();
-			$tw.Bob.oembetter.whitelist(whitelist);
-			$tw.Bob.oembetter.endpoints(endpoints);
-			$tw.Bob.oembetter.after = []; //clear old fb video filter
-			$tw.Bob.urls = $tw.Bob.urls || {};
-		} catch(e) {
-			$tw.Bob.logger.log(e.toString());
-			$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the oembetter node package to be installed. Run 'npm install oembetter' in the root of the TiddlyWiki repository, or clone oembetter and run 'npm link' from that directory to create a global link.");
-		}
-		
 	} else {
 		$tw.oembed = $tw.oembed || {};
 		$tw.oembed.whitelist = whitelist;

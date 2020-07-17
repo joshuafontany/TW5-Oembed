@@ -10,13 +10,11 @@ title: $:/plugins/joshuafontany/oembed/manual-embed
 
 ''Request Oembed from:'' <<urlDomain>>
 
-<a href=<<request>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<request>>/></a>
-
-<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" size="128" autoHeight="no" rows="10" />
-
-<$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveSate>> >Save!</$button>
-
-* Click the ''Request'' link.
+* Click the ''Request'' link: <a href=<<request>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<request>>/></a>
 * Copy and paste the response Json into the stateTiddler input box. 
-* Then click Save!
+* Then click <$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveState>> >Save!</$button>
+
+
+
+<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" style="width: 500px; height: 500px;" autoHeight="no" rows="10" />
 </$set>

@@ -5,14 +5,14 @@ tags: [[$:/tags/Stylesheet]]
   padding-bottom: 0.5em;;
 }
 
-.tc-embedded-link > svg {
+.tc-embedded-link .tc-embedded-svg > svg {
   fill: <<colour primary>>;
   height: 1.2em;
   width: 1.2em;
 }
 
 .tc-embedded {
-  border: {{$:/plugins/joshuafontany/oembed/config/styles##border}};
+  {{$:/plugins/joshuafontany/oembed/config/styles##tc-embedded}}
 }
 
 .tc-embedded-responsive {
