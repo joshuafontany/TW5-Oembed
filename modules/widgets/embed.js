@@ -140,11 +140,11 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
             }];
           } else {
             if (responseHTML) {
-              var iframeStyles = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
-              if (protocol === "file:" 
-                && response["provider_name" === "Facebook"]
-                && response["type"] === "video") {
-                  iframeStyle += this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/local-fb-video-fix");
+              var fbVideo, iframeStyles = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
+              fbVideo = (protocol == "file:" && response["provider_name"] == "Facebook" && response["type"] == "video");
+              if (fbVideo) {
+                  var fbFix = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/local-fb-video-fix");
+                  iframeStyles = iframeStyles + fbFix;
                 }
               var embed = '<html><head><style>'+iframeStyles+'</style></head><body>';
               embed = embed+responseHTML;

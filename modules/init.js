@@ -39,11 +39,12 @@ exports.startup = function() {
 				if (endpoint.schemes) {
 					for (let s = 0; s < endpoint.schemes.length; s++) {
 						const scheme = endpoint.schemes[s];
-						var schemaURL = ($tw.node)? urls.parse(scheme): new URL(scheme);
+						var cleanScheme = scheme.replace(/(?<=http:|https:)(\/\/\*\.)/, "\/\/");
+						var schemeURL = ($tw.node)? urls.parse(cleanScheme): new URL(cleanScheme);
 						var config = {
 							domain: providerURL.hostname,
 							endpoint: endpoint.url
-						}, path = $tw.utils.wildcardToRegExp(schemaURL.pathname);
+						}, path = $tw.utils.wildcardToRegExp(schemeURL.pathname);
 						config.path = path;
 						endpoints.push(config);
 					}
@@ -58,7 +59,11 @@ exports.startup = function() {
 			}
 		};
 	} catch (error) {
-		$tw.Bob.logger.log(error.toString());
+		if ($tw.Bob) {
+			$tw.Bob.logger.log(error.toString());			
+		} else {
+			console.log(error.toString());
+		}
 	}
 	if($tw.node) {
 		if(!$tw.modules.titles["$:/plugins/OokTech/Bob/ServerSide.js"]) {

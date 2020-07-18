@@ -4,13 +4,15 @@ type:
 
 /* This CSS fixes a Chrome rendering error that hides 
   Facebook Videos when loaded from a "file:///" domain.
-  The $embed widget handles the logic to apply thi. */
+  The $embed widget handles the logic to apply this. */
 
 .fb-video > span {
-  height: unset !important;
+  vertical-align: bottom !important;
+  width: 100% !important;
+  height: 455px !important;
 }
 
 .fb-video > span > iframe {
-  height: unset !important;
-  width: unset !important;
+  width: 100% !important;
+  height: 455px !important;
 }
