@@ -86,11 +86,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         }
       }];
     } else {
-      //find out where we are served from
-      var protocol = this.wiki.getTiddlerText("$:/info/url/protocol")
-      // get the data tiddler
-      var stateExists = this.wiki.tiddlerExists(this.stateTitle);
-      if (!stateExists && !$tw.Bob) {
+      if (!this.stateExists && !$tw.Bob) {
         // manual embed templateTree
         templateTree[1].children = [{
           type: "transclude", 
@@ -98,14 +94,14 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
             tiddler: {type: "string", value: "$:/plugins/joshuafontany/oembed/manual-embed"}
           }
         }];
-      } else if (!stateExists && $tw.Bob) {
+      } else if (!this.stateExists && $tw.Bob) {
         // Create the empty message object
         let message = {};
         // Add in the message type and param, if they exist
         message.type = "oembed";
         //message.param = {};
         message.url = this.target;
-        message.maxWidth = this.embedMaxWidth
+        message.maxWidth = this.embedWidth
         message.dataTitle = this.stateTitle;
         // This is needed for when you serve multiple wikis
         const wikiName = this.wiki.getTiddlerText("$:/WikiName");
@@ -118,19 +114,11 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
           $tw.Bob.Shared.sendMessage(message, 0)
           console.log("Requesting oembed for " + this.stateTitle)
         }        
-      } else if (stateExists) {
-        var tiddler = this.wiki.getTiddler(this.stateTitle);
+      } else if (this.stateExists) {
         try {
-          //find out if we are a local file on `file:` protocol
-          var response, responseHTML;
-          // use the response
-          response = JSON.parse(tiddler.fields.text);
-          if(protocol === "file:"){
-            responseHTML = response["html"].replace(/(?<=<script.+?)(src="\/\/)(?=.*?>)/g, 'src="http:\/\/');
-          } else {
-            responseHTML = response["html"];
-          }
-          if(responseHTML && responseHTML.match(/(?:^<iframe)/)) {
+          var response = JSON.parse(this.stateTiddler.fields.text);
+          // determine the response type
+          if(response["html"] && response["html"].match(/(?:^<iframe)/)) {
             templateTree[1].children = [ {
               type: "transclude",
               attributes: {
@@ -139,6 +127,23 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
               }
             }];
           } else {
+            //find out where we are served from
+            var responseHTML, protocol = this.wiki.getTiddlerText("$:/info/url/protocol");
+            if(response["html"]){
+              // find out if we are a local file on `file:` protocol          
+              if(protocol === "file:" && response["html"]){
+                responseHTML = response["html"].replace(/(?<=<script.+?)(src="\/\/)(?=.*?>)/g, 'src="http:\/\/');
+              }else if(response["html"]){
+                responseHTML = response["html"];
+              }
+            }else if(!response["html"] 
+              && response["type"] == "photo"
+              && response["url"]){
+                var width = (response["width"])?response["width"]+"px":"auto",
+                  height = (response["height"])?response["height"]+"px":"auto",
+                  alt = (response["title"])?response["title"]: response["url"];
+                responseHTML = '<div class="embed-type-image"><a href="'+response["url"]+'" class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><img src="'+response["url"]+'" width="'+width+'" height="'+height+'" alt="'+alt+'"/></a></div>';
+            }
             if (responseHTML) {
               var fbVideo, iframeStyles = this.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/styles/iframe-body");
               fbVideo = (protocol == "file:" && response["provider_name"] == "Facebook" && response["type"] == "video");
@@ -180,9 +185,20 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
                 break;
             }
             if(aspectClass) classes = classes + " "+ aspectClass;
-          } else if (response["width"] && !response["height"]) {
+          }else{
             classes = classes + " "+ "tc-embedded-default";
           }
+          //finalize wrapper classes
+          var styleString = '';
+          if(this.embedWidth||this.embedHeight) {
+            styleString += (this.embedHeight)? 'padding-top: '+this.embedHeight+' !important; ':'';
+            styleString += (this.embedWidth)? 'max-width: '+this.embedWidth+' !important; ':'';
+            styleString = styleString.trim();            
+          }
+          if(styleString !== '') templateTree[1].attributes["style"] = {
+            type: "string",
+            value: styleString
+          };
           templateTree[1].attributes["class"].value = classes;
         } catch (error) {
           console.log("Invalid JSON response to oembed request " + this.stateTitle);
@@ -201,7 +217,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
   EmbedWidget.prototype.execute = function() {
     // Get our parameters
     this.embedTarget = this.getAttribute("target", this.getVariable("currentTiddler"));
-    this.embedMaxWidth = this.getAttribute("maxwidth");
+    this.embedHeight = this.getAttribute("height");
+    this.embedWidth = this.getAttribute("width");
     this.embedClass = this.getAttribute("class", "");
 
     this.target = this.embedTarget;
@@ -227,6 +244,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     this.setVariable("requestEndpoint", this.requestEndpoint);
     // component encode the url for the stateTitle
     this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
+    this.stateExists = this.wiki.tiddlerExists(this.stateTitle);
+    this.stateTiddler = (this.stateExists)? this.wiki.getTiddler(this.stateTitle):{};
     this.setVariable("url", this.target);
     this.setVariable("urlDomain", this.requestURL.hostname);
     this.setVariable("stateTitle", this.stateTitle);
@@ -242,8 +261,8 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       var tiddler = this.wiki.getTiddler(this.embedTarget); 
       if (tiddler && tiddler.fields.url !== this.target) newUrl = true;
     }
-    if(changedAttributes.target || changedAttributes.maxwidth || changedAttributes["class"] 
-      || newUrl || changedTiddlers[this.stateTitle]) {
+    if(changedAttributes.target || changedAttributes.width || changedAttributes.height 
+      || changedAttributes["class"] || newUrl || changedTiddlers[this.stateTitle]) {
       this.refreshSelf();
       return true;
     } else {

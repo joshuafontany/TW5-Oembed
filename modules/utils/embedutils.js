@@ -16,7 +16,8 @@ Various embed utility functions added to $tw.utils
      * RegExp-escapes all characters in the given string.
      */
     exports.regExpEscape = function (s) {
-        return s.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&');
+        if(s === '') return '';
+        else return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
     /**
      * Creates a RegExp from the given string, converting asterisks to .* expressions,

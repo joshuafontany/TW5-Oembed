@@ -7,10 +7,10 @@ Wiki text inline rule for embedded external links. For example:
 
 ```
 [embed[https://tiddlywiki.com/fractalveg.jpg]]
-[embed maxwidth=500 [https://tiddlywiki.com/fractalveg.jpg]]
-[embed maxwidth={{!!maxwidth}} [https://tiddlywiki.com/fractalveg.jpg]]
-[embed maxwidth={{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}} [https://tiddlywiki.com/fractalveg.jpg]]
-[embed[TiddlerTitle]]
+[embed width=500 [https://tiddlywiki.com/fractalveg.jpg]]
+[embed width={{!!width}} [https://tiddlywiki.com/fractalveg.jpg]]
+[embed width={{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}} [https://tiddlywiki.com/fractalveg.jpg]]
+[embed height="32em" class="custom-embed" [TiddlerTitle]]
 ```
 
 Generates the `<$embed>` widget.

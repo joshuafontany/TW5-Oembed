@@ -1,6 +1,11 @@
 title: $:/plugins/joshuafontany/oembed/styles/tc-embedded
 tags: [[$:/tags/Stylesheet]]
 
+.manual-embed-edit {
+  height: 200px;
+  width: 100%;
+}
+
 .tc-embedded-link {
   padding-bottom: 0.5em;;
 }
@@ -50,5 +55,5 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .tc-embedded-default {
-  padding-top: 64em; /* default iframe */
+  {{$:/plugins/joshuafontany/oembed/config/styles##tc-embedded-default}}
 }

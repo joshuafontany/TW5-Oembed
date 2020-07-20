@@ -1,3 +1,4 @@
 {
-    "tc-embedded" : "border: 2px solid <<colour primary>>;"
+    "tc-embedded" : "border: 2px solid <<colour primary>>;",
+    "tc-embedded-default" : "padding-top: 64em; /* default iframe height */"
 }

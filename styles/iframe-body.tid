@@ -13,3 +13,8 @@ body {
   scrollbar-shadow-color: #ffffff;
   scrollbar-track-color: #000000;
 }
+
+.embed-type-image img {
+  width: 100%;
+  height: 100%;
+}

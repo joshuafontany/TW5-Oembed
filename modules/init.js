@@ -41,20 +41,33 @@ exports.startup = function() {
 						const scheme = endpoint.schemes[s];
 						var cleanScheme = scheme.replace(/(?<=http:|https:)(\/\/\*\.)/, "\/\/");
 						var schemeURL = ($tw.node)? urls.parse(cleanScheme): new URL(cleanScheme);
+						var domain = schemeURL.hostname.match(/(?<hostname>(\w+\.)*)(?<domainname>(\w+\.\w+))/)[0] || schemeURL.host.match(/(?<hostname>(\w+\.)*)(?<domainname>(\w+\.\w+))/)[0] ||schemeURL.hostname,
+							path = $tw.utils.wildcardToRegExp(cleanScheme.split(domain)[1]);
 						var config = {
-							domain: providerURL.hostname,
-							endpoint: endpoint.url
-						}, path = $tw.utils.wildcardToRegExp(schemeURL.pathname);
-						config.path = path;
-						endpoints.push(config);
+							domain: domain,
+							path: path,
+							endpoint: endpoint.url							
+						}
+						var check = endpoints.some(function(e) {
+							return (e.domain +"" == this.domain +""
+								&& e.path +"" == this.path +""
+							)}, config);
+						if(!check) endpoints.push(config);
 					}
 				} else {
+					var cleanScheme = provider["provider_url"].replace(/(?<=http:|https:)(\/\/\*\.)/, "\/\/");
+					var schemeURL = ($tw.node)? urls.parse(cleanScheme): new URL(cleanScheme);
+					var domain = schemeURL.hostname.match(/(?<hostname>(\w+\.)*)(?<domainname>(\w+\.\w+))/)[0] || schemeURL.host.match(/(?<hostname>(\w+\.)*)(?<domainname>(\w+\.\w+))/)[0] ||schemeURL.hostname;
 					var config = {
-						domain: providerURL.hostname,
-						endpoint: endpoint.url,
-						path: /\//
-					};
-					endpoints.push(config);
+						domain: domain,
+						path: /\//,
+						endpoint: endpoint.url							
+					}
+					var check = endpoints.some(function(e) {
+						return (e.domain +"" == this.domain +""
+							&& e.path +"" == this.path +""
+						)}, config);
+					if(!check) endpoints.push(config);
 				}
 			}
 		};
@@ -73,7 +86,7 @@ exports.startup = function() {
 				$tw.Bob.oembetter = require("oembetter")();
 				$tw.Bob.oembetter.whitelist(whitelist);
 				$tw.Bob.oembetter.endpoints(endpoints);
-				//$tw.Bob.oembetter.after = []; //clear old fb video filter
+				$tw.Bob.oembetter.after = []; //clear old fb video filter
 				$tw.Bob.urls = $tw.Bob.urls || {};
 			} catch(e) {
 				$tw.Bob.logger.log(e.toString());

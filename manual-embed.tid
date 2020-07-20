@@ -14,7 +14,5 @@ title: $:/plugins/joshuafontany/oembed/manual-embed
 * Copy and paste the response Json into the stateTiddler input box. 
 * Then click <$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveState>> >Save!</$button>
 
-
-
-<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" style="width: 500px; height: 500px;" autoHeight="no" rows="10" />
+<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" class="manual-embed-edit" autoHeight="yes" minHeight="200px"/>
 </$set>
