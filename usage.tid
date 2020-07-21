@@ -3,15 +3,21 @@ title: $:/plugins/joshuafontany/oembed/usage
 
 ! Introduction - New Wikitext Syntax
 
-This plugin introduces the following, new, WikiText Syntax: `[embed[$url_or_tiddler$]]`
+This plugin introduces the following, new, ~WikiText Syntax: `[embed[$url_or_tiddler$]]`
 
 This is automatically converted into an `$embed`, and can take attributes in the following forms:
 
 ```
 [embed[https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+
 [embed width=500 [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+
 [embed width={{!!width}} [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
-[embed width={{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}} [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+
+[embed
+ width={{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}}
+  [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+
 [embed height="32em" class="custom-embed" [TiddlerTitle]]
 ```
 
@@ -23,17 +29,17 @@ If ''Bob'' is available, the server automatically calls the endpoint API, which 
 
 ! Rendering the Embedded Content
 
-This widget renders a nested set of elements that causes the `<iframe>` element holding our embedded code to be "responsive". This means it will attempt to fill space, resize along with the window, and display scrollbar when content spills outside of its bounds and is hidden. Sometimes the returned data will have `height` and `width` properties that will allow the widget to set an intelligent "aspect-ratio". If unable, the default height of "64em" is used. You can override this by setting a valid CSS height-value for the `height` attribute. Similarly, if the `width` attribute is set, the API request will include a "maxWidth" option with that value, or the max-width of the containing `<div>` will be set to that value.
+This widget renders a nested set of elements that causes the `<iframe>` element holding our embedded code to be "responsive". This means it will attempt to fill space, resize along with the window, and display scrollbar when content spills outside of its bounds and is hidden. Sometimes the returned data will have `height` and `width` properties that will allow the widget to set an intelligent "aspect-ratio". If unable, the default height of "64em" is used. You can override this by setting a valid CSS height-value for the `height` attribute. Similarly, if the `width` attribute is set, the API request will include a "maxwidth" option with that value, or the max-width of the containing `<div>` will be set to that value.
 
 ! Attributes
 
 |!Attribute |!Description |
-| `target` |The name of a tiddler with a `url` field, or if a tiddler with that name is not found, a url the user wishes to embed. This allows transclusion, variables, etc.|
-| `height` |(Optional) The maximum height that the embeddable HTML should fill. Given in pixels ('px" not required).|
-| `width` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required).|
-| `class` |(Optional) The classes to add to the wrapping <div>.|
+| `target` |The name of a tiddler with a `url` field, or if a tiddler with that name is not found, a url the user wishes to embed. This allows transclusion, variables, etc. |
+| `height` |(Optional) The maximum height that the embeddable HTML should fill. Given in pixels ('px" not required). |
+| `width` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required). |
+| `class` |(Optional) The classes to add to the wrapping <div>. |
 
-!! [[Using Oembed]]
+!! Using Oembed
 
 Examples are found in the [[Using Oembed]] tiddler in the demo wiki:
 

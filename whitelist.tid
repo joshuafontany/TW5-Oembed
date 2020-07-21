@@ -1,0 +1,4 @@
+title: $:/config/plugins/joshuafontany/oembed/whitelist
+type:
+list: Instagram Twitter Facebook Flickr Scribd Vimeo [[YouTube]] Soundcloud Reddit Deviantart.com
+oembed-providers: 

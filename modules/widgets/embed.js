@@ -101,7 +101,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
         message.type = "oembed";
         //message.param = {};
         message.url = this.target;
-        message.maxWidth = this.embedWidth
+        message.maxwidth = this.embedWidth
         message.dataTitle = this.stateTitle;
         // This is needed for when you serve multiple wikis
         const wikiName = this.wiki.getTiddlerText("$:/WikiName");

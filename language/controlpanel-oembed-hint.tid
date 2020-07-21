@@ -1,0 +1,5 @@
+title: $:/language/ControlPanel/Oembed/Hint
+
+!!Oembed for ~TiddlyWiki5 
+
+Oembed options and whitelist. This plugin requires the [[$:/plugins/tiddlywiki/consent-banner]] core plugin installed, and that the user has accepted cookies in order to render any embeded html code.

@@ -37,7 +37,7 @@ if($tw.node) {
   if(data.url && !$tw.Bob.urls[prefix].includes(data.url)) {
     $tw.Bob.urls[prefix].push(data.url);
     $tw.Bob.logger.log("oembed query: " + data.url);
-    if (data.maxWidth) options.maxwidth = data.maxWidth;
+    if (data.maxwidth) options.maxwidth = data.maxwidth;
     //Provider specific options
     //Fetch
     $tw.Bob.oembetter.fetch(data.url, options, function(err, response) {

@@ -1,0 +1,8 @@
+title: $:/plugins/joshuafontany/oembed/config/controlpanel-options
+type: text/vnd.tiddlywiki
+tags: $:/tags/ControlPanel/Oembed
+caption: {{$:/language/ControlPanel/Oembed/Options/Caption}}
+
+{{$:/language/ControlPanel/Oembed/Options/Hint}}
+
+

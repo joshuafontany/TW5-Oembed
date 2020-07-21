@@ -1,0 +1,10 @@
+title: $:/plugins/joshuafontany/oembed/config/controlpanel
+type: text/vnd.tiddlywiki
+tags: $:/tags/ControlPanel
+caption: {{$:/language/ControlPanel/Oembed/Caption}}
+
+{{$:/language/ControlPanel/Oembed/Hint}}
+
+<div class="tc-control-panel">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/ControlPanel/Oembed]!has[draft.of]]" "$:/plugins/joshuafontany/oembed/config/controlpanel-whitelist">>
+</div>

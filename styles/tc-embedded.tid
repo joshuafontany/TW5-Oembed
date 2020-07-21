@@ -17,7 +17,7 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .tc-embedded {
-  {{$:/plugins/joshuafontany/oembed/config/styles##tc-embedded}}
+  {{$:/plugins/joshuafontany/oembed/controlpanel/styles##tc-embedded}}
 }
 
 .tc-embedded-responsive {
@@ -55,5 +55,5 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .tc-embedded-default {
-  {{$:/plugins/joshuafontany/oembed/config/styles##tc-embedded-default}}
+  {{$:/plugins/joshuafontany/oembed/controlpanel/styles##tc-embedded-default}}
 }

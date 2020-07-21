@@ -1,0 +1,33 @@
+title: $:/plugins/joshuafontany/oembed/config/controlpanel-whitelist
+type: text/vnd.tiddlywiki
+tags: $:/tags/ControlPanel/Oembed
+caption: {{$:/language/ControlPanel/Oembed/Whitelist/Caption}}
+
+\define addProvider()
+<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="$(provider)$" />
+\end
+\define removeProvider()
+<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="-$(provider)$" />
+\end
+
+{{$:/language/ControlPanel/Oembed/Whitelist/Hint}}
+
+<div class="provider-list-wrapper">
+<ul class="provider-list active">
+<li>''Active''</li>
+<$list variable="provider" filter="[list[$:/config/plugins/joshuafontany/oembed/whitelist]]">
+<li class="provider-control">
+<$button class="tc-btn-invisible tc-tiddlylink" actions=<<removeProvider>> >{{$:/core/images/chevron-down}} ''<$text text=<<provider>> />''</$button>
+</li>
+</$list>
+</ul>
+
+<ul class="provider-list inactive">
+<li>''Inactive''</li>
+<$list variable="provider" filter="[list[$:/config/plugins/joshuafontany/oembed/whitelist!!oembed-providers]]">
+<li class="provider-control">
+<$button class="tc-btn-invisible tc-tiddlylink" actions=<<addProvider>> >{{$:/core/images/chevron-up}} ''<$text text=<<provider>> />''</$button>
+</li>
+</$list>
+</ul>
+</div>

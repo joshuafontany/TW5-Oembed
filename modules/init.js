@@ -21,17 +21,17 @@ exports.synchronous = true;
 exports.startup = function() {
 	if($tw.node) var urls = require('url');
 	var endpoints = [],
-	whitelist = this.getTiddlerList("$:/plugins/joshuafontany/oembed/config/whitelist"),
-	providerlist = this.getTiddlerList("$:/plugins/joshuafontany/oembed/config/whitelist", "oembed-providers"),
+	whitelist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist"),
+	providerlist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist", "oembed-providers"),
 	providers = JSON.parse($tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/providers/oembed", "[]"));
 	try {
 		for (let p = 0; p < providers.length; p++) {
 			const provider = providers[p];
-			if(!providerlist.contains(provider["provider_name"].toLowerCase())){
-				providerlist.push(provider["provider_name"].toLowerCase());
+			if(!providerlist.includes(provider["provider_name"])){
+				providerlist.push(provider["provider_name"]);
 			}
-			var testRegExp = new RegExp(whitelist.join("|"));
-			if (!provider.provider_name.toLowerCase().match(testRegExp)) {
+			var testRegExp = new RegExp(whitelist.map($tw.utils.regExpEscape).join("|"));
+			if (!provider.provider_name.match(testRegExp)) {
 				continue;
 			}
 			for (let e = 0; e < provider.endpoints.length; e++) {
@@ -78,7 +78,7 @@ exports.startup = function() {
 			console.log(error.toString());
 		}
 	}
-	this.wiki.setText("$:/plugins/joshuafontany/oembed/config/whitelist","oembed-providers",undefined,$tw.utils.stringifyList(providerlist));
+	 $tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/whitelist","oembed-providers",undefined,$tw.utils.stringifyList(providerlist));
 	if($tw.node) {
 		if(!$tw.modules.titles["$:/plugins/OokTech/Bob/ServerSide.js"]) {
 			$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the 'OokTech/Bob' plugin to be installed when running on node.js.");

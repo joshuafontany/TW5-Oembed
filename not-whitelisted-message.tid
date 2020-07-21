@@ -4,4 +4,4 @@ Unable to request embedded content from<br/><a href=<<url>> class="tc-tiddlylink
 
 <hr/>
 
-The domain for ''<<urlDomain>>'' is not whitelisted in [[$:/plugins/joshuafontany/oembed/config/whitelist]]. 
+The domain for ''<<urlDomain>>'' is not whitelisted in [[$:/config/plugins/joshuafontany/oembed/whitelist]]. 

@@ -1,0 +1,7 @@
+title: $:/language/ControlPanel/Oembed/Whitelist/Hint
+
+!!Oembed Whitelist
+
+Note: At this time, updating the Oembed Whitelist requires reloading the wiki and/or restarting the server to pick up the change.
+
+The Bob server will use the Whitelist found on the master/root wiki.
