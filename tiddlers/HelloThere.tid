@@ -1,0 +1,28 @@
+created: 20200721015144563
+creator: Joshua Fontany
+modified: 20200721213537006
+modifier: Joshua Fontany
+title: HelloThere
+
+!Installation
+
+Drag and drop both of the following plugins into your wiki. Alternately, clone the ~GitHub repository into a `./joshuafontany/oembed` directory within your ~TiddlyWiki Plugins path.
+
+* [[$:/plugins/joshuafontany/oembed]]
+* [[$:/plugins/tiddlywiki/consent-banner]]
+
+!!Options
+
+See the ''Oembed'' tab of the [[$:/ControlPanel]] for documentation and options.
+
+The current ''Whitelist'' is:
+
+<ul>
+<$list variable="provider" filter="[list[$:/config/plugins/joshuafontany/oembed/whitelist]]">
+<li><$text text=<<provider>> /></li>
+</$list>
+</ul>
+
+! ~ReadMe
+
+{{$:/plugins/joshuafontany/oembed/readme}}

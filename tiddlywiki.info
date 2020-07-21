@@ -1,6 +1,7 @@
 {
     "description": "Empty edition",
     "plugins": [
+        "tiddlywiki/consent-banner",
         "joshuafontany/oembed"
     ],
     "themes": [

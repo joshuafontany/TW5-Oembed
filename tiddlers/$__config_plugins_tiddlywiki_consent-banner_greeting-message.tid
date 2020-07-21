@@ -1,0 +1,31 @@
+created: 20200721012452073
+creator: Joshua Fontany
+modified: 20200721014812095
+modifier: Joshua Fontany
+title: $:/config/plugins/tiddlywiki/consent-banner/greeting-message
+
+! Oembed Demo Wiki
+
+The ''joshuafontany/oembed'' plugin loads outside html code into your wiki from approved (whitelisted) Oembed Providers. The rendered content is always embedded into an `<iframe>` element for security. As we cannot control the content of scripts loaded from third parties, we also require you to accept the "consent for cookies and analytics" from Tiddlywiki's ''consent-banner'' plugin (this modal).
+
+While no code using analytics or cookies is included in the ''joshuafontany/oembed'' plugin, in order for you embedded URLs to render you must both: //Accept// this consent-banner; and //Whitelist// a known Oembed Provider. See the //Control Panel// for the ''Oembed'' readme and options.
+
+The following is the standard Tiddlywiki consent disclaimer:
+
+! Our use of cookies
+
+We use necessary cookies to make our site work. We’d also like to set optional analytics to help us improve it. We won’t set optional cookies unless you enable them. Using this tool will set a cookie on your device to remember your preferences.
+
+---
+
+!! Necessary cookies
+
+Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions.
+
+---
+
+!! Analytics cookies
+
+We’d like to set non-essential cookies, such as Google Analytics, to help us to improve our website by collecting and reporting information on how you use it. The cookies collect information in a way that does not directly identify anyone.
+
+---
