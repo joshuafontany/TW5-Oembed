@@ -1,19 +1,40 @@
 tags: 
 title: $:/plugins/joshuafontany/oembed/usage
 
-! Introduction
+! Introduction - New Wikitext Syntax
 
-The `$embed` widget asks the Bob server to request an embeddable/HTML snippet for a user supplied url. This is done by calling the 'oembetter' node package on the server side, and then storing the returned json as a state tiddler that can be queried and transcluded by Tiddlywiki. You can call the embed widget directly via widget-syntax or also via the wikitext `[embed[$url_or_tiddler$]]` syntax. By default, an empty `[embed[]]` widget will attempt to use the value of the `currentTiddler` variable as the source of the target url.
+This plugin introduces the following, new, WikiText Syntax: `[embed[$url_or_tiddler$]]`
+
+This is automatically converted into an `$embed`, and can take attributes in the following forms:
+
+```
+[embed[https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+[embed width=500 [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+[embed width={{!!width}} [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+[embed width={{$:/themes/tiddlywiki/vanilla/metrics/tiddlerwidth}} [https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+[embed height="32em" class="custom-embed" [TiddlerTitle]]
+```
+
+The user supplies a URL that they wish to embed, or the title of a tiddler with a `url` field holding a target URL. By default, an empty `[embed[]]` widget will attempt to use the value of the `currentTiddler` variable as the source of the target url. The target URL must be from one of the ''Whitelited Providers''.
+
+If ''Bob'' and ''oembetter'' are not available, the `$embed` widget will prompt the user with a form to call the correct API. The user then pastes the returned JSON data into a text-edit field and clicks Save. The widget will automatically try to render the new content.
+
+If ''Bob'' is available, the server automatically calls the endpoint API, which should return an embeddable HTML snippet for the user supplied url. This is done by calling the ''oembetter'' node package on the server side, and then storing the returned json as a state tiddler. This causes the widget to also automatcally try to render the new content.
+
+! Rendering the Embedded Content
+
+This widget renders a nested set of elements that causes the `<iframe>` element holding our embedded code to be "responsive". This means it will attempt to fill space, resize along with the window, and display scrollbar when content spills outside of its bounds and is hidden. Sometimes the returned data will have `height` and `width` properties that will allow the widget to set an intelligent "aspect-ratio". If unable, the default height of "64em" is used. You can override this by setting a valid CSS height-value for the `height` attribute. Similarly, if the `width` attribute is set, the API request will include a "maxWidth" option with that value, or the max-width of the containing `<div>` will be set to that value.
 
 ! Attributes
 
 |!Attribute |!Description |
 | `target` |The name of a tiddler with a `url` field, or if a tiddler with that name is not found, a url the user wishes to embed. This allows transclusion, variables, etc.|
-| `maxwidth` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required).|
+| `height` |(Optional) The maximum height that the embeddable HTML should fill. Given in pixels ('px" not required).|
+| `width` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required).|
 | `class` |(Optional) The classes to add to the wrapping <div>.|
 
-!![[Using oEmbed]]
+!! [[Using Oembed]]
 
-Examples are found in the [[Using oEmbed]] tiddler in the demo wiki:
+Examples are found in the [[Using Oembed]] tiddler in the demo wiki:
 
-https://joshuafontany.github.io/TW5-oembed/ (NOT LIVE YET)
+https://joshuafontany.github.io/TW5-oembed/

@@ -7,5 +7,6 @@
   "modified": "20200618000000000",
   "description": "An oEmbed Client for Tiddlywiki on Bob",
   "dependents": ["tiddlywiki/consent-banner"],
-  "created": "20200618000000000"
+  "created": "20200618000000000",
+  "list": "readme license"
 }
