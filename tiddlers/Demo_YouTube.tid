@@ -1,0 +1,24 @@
+created: 20200721230259743
+creator: Joshua Fontany
+modified: 20200721232339316
+modifier: Joshua Fontany
+tags: Demo
+title: Demo/YouTube
+
+!!! <$link tiddler=<<currentTiddler>> ><$text text=<<currentTiddler>> /></$link>
+
+<$set name="state" filter="[<currentTiddler>addprefix[$:/state/oembed/example/]]" >
+
+<$reveal type="nomatch" state=<<state>> text="show">
+
+<$button set=<<state>> setTo="show">Show me</$button>
+
+</$reveal>
+<$reveal type="match" state=<<state>> text="show">
+
+<$button set=<<state>> setTo="hide">Hide me</$button>
+
+[embed[https://www.youtube.com/watch?v=Imx-EzCOWGc]]
+
+</$reveal>
+</$set>

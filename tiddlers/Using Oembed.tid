@@ -1,13 +1,16 @@
 created: 20200721200451241
 creator: Joshua Fontany
-modified: 20200721213827722
+modified: 20200721232325756
 modifier: Joshua Fontany
 title: Using Oembed
 
-Use the embedlink syntax `[embed[]]` or the widget `<$embed target="">` to render external content. This is a recent ~TiddlyWiki Hang Out hosted by Jeremy Ruston:
+Use the embedlink syntax, `[embed[]]`, or the $embed widget, `<$embed target="">`, to render external content. 
 
-`[embed[https://www.youtube.com/watch?v=lvnqgfvohfM]]`
+The YouTube demo is a recent ~TiddlyWiki Hang Out hosted by Jeremy Ruston. Once cookies are accepted and "~YouTube" is listed in the ''Whitelist'', the below wikitext will render a video player. Because many embedded videos can cause the browser to lag, each Demo is wrapped in a reveal widget:
 
-Once cookie are accepted and "YouTube" is listed in the Whitelist, the above code will render a video player below:
+`[embed[https://www.youtube.com/watch?v=Imx-EzCOWGc]]`
 
-[embed[https://www.youtube.com/watch?v=lvnqgfvohfM]]
+<$list filter="[tag[Demo]]">
+
+{{}}
+</$list>
