@@ -20,7 +20,7 @@ exports.synchronous = true;
 
 exports.startup = function() {
 	if($tw.node) var urls = require('url');
-	var endpoints = [],
+	var endpoints = [], oembetterWhitelist = [],
 	whitelist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist"),
 	providerlist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist", "oembed-providers"),
 	providers = JSON.parse($tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/providers/oembed", "[]"));
@@ -53,6 +53,9 @@ exports.startup = function() {
 								&& e.path +"" == this.path +""
 							)}, config);
 						if(!check) endpoints.push(config);
+						var domainCheck = endpoints.some(function(d) {
+							return (d +"" == this.domain +"")}, config);
+						if(!domainCheck) oembetterWhitelist.push(config.domain);
 					}
 				} else {
 					var cleanScheme = provider["provider_url"].replace(/(?<=http:|https:)(\/\/\*\.)/, "\/\/");
@@ -68,6 +71,9 @@ exports.startup = function() {
 							&& e.path +"" == this.path +""
 						)}, config);
 					if(!check) endpoints.push(config);
+					var domainCheck = endpoints.some(function(d) {
+						return (d +"" == this.domain +"")}, config);
+					if(!domainCheck) oembetterWhitelist.push(config.domain);
 				}
 			}
 		};
@@ -78,14 +84,23 @@ exports.startup = function() {
 			console.log(error.toString());
 		}
 	}
-	 $tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/whitelist","oembed-providers",undefined,$tw.utils.stringifyList(providerlist));
+	$tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/whitelist","oembed-providers",undefined,$tw.utils.stringifyList(providerlist));
+	function replacer(name, val) {
+		// convert RegExp to string
+		if ( val && val.constructor === RegExp ) {
+			return val.toString();
+		} else {
+			return val; // return as is
+		}
+	};
+	$tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/endpoints","text",undefined,JSON.stringify(endpoints, replacer, 2));
 	if($tw.node) {
 		if(!$tw.modules.titles["$:/plugins/OokTech/Bob/ServerSide.js"]) {
 			$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the 'OokTech/Bob' plugin to be installed when running on node.js.");
 		} else { 
 			try {
 				$tw.Bob.oembetter = require("oembetter")();
-				$tw.Bob.oembetter.whitelist(whitelist);
+				$tw.Bob.oembetter.whitelist(oembetterWhitelist);
 				$tw.Bob.oembetter.endpoints(endpoints);
 				$tw.Bob.oembetter.after = []; //clear old fb video filter
 				$tw.Bob.urls = $tw.Bob.urls || {};

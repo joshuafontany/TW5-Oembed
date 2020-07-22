@@ -1,11 +1,12 @@
-tags: 
+tags: $:/tags/ControlPanel/Oembed
 title: $:/plugins/joshuafontany/oembed/usage
+caption: {{$:/language/ControlPanel/Oembed/Usage/Caption}}
 
 ! Introduction - New Wikitext Syntax
 
 This plugin introduces the following, new, ~WikiText Syntax: `[embed[$url_or_tiddler$]]`
 
-This is automatically converted into an `$embed`, and can take attributes in the following forms:
+This is automatically converted into an `<$embed>` widget, and can take attributes in the following forms:
 
 ```
 [embed[https://www.youtube.com/watch?v=Imx-EzCOWGc]]
@@ -37,9 +38,9 @@ This widget renders a nested set of elements that causes the `<iframe>` element 
 | `target` |The name of a tiddler with a `url` field, or if a tiddler with that name is not found, a url the user wishes to embed. This allows transclusion, variables, etc. |
 | `height` |(Optional) The maximum height that the embeddable HTML should fill. Given in pixels ('px" not required). |
 | `width` |(Optional) The maximum width that the embeddable HTML should fill. Given in pixels ('px" not required). |
-| `class` |(Optional) The classes to add to the wrapping <div>. |
+| `class` |(Optional) The classes to add to the wrapping `<div>`. |
 
-!! Using Oembed
+! Using Oembed
 
 Examples are found in the [[Using Oembed]] tiddler in the demo wiki:
 

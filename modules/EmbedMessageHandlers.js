@@ -53,12 +53,12 @@ if($tw.node) {
         try {
           responseTiddler.type = "application/json";
           responseTiddler.text = JSON.stringify(response, null, 2);
-          $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix, data.source_connection);
         } catch (error) {
           $tw.Bob.logger.log("Invalid JSON response to oembed request " + data.dataTitle);
-          var responseError = {success: success, error: error, response: response};
+          var responseError = {success: success, error: error, response: response || {}};
           $tw.Bob.logger.log(error.toString());
-        } 
+        }
+        if(responseTiddler.type) $tw.syncadaptor.saveTiddler(new $tw.Tiddler(responseTiddler), prefix);
         // thumbnail_url points to an image
         //$tw.Bob.logger.log(response.thumbnail_url);
       } else {

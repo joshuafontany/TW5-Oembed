@@ -7,14 +7,10 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .tc-embedded-link {
-  padding-bottom: 0.5em;;
+  padding-bottom: 0.5em;
 }
 
-.tc-embedded-link .tc-embedded-svg > svg {
-  fill: <<colour primary>>;
-  height: 1.2em;
-  width: 1.2em;
-}
+.tc-embedded-link .tc-embedded-svg { fill: #d79921; height: 22px; width: 22px; }
 
 .tc-embedded {
   {{$:/plugins/joshuafontany/oembed/controlpanel/styles##tc-embedded}}
