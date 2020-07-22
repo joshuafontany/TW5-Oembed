@@ -6,12 +6,9 @@ title: $:/plugins/joshuafontany/oembed/embed-link
 \end
 
 <div class="tc-embedded-link">
-    <svg class="tc-embedded-svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 28 28">
-        <title><<urlDomain>></title>
-        <$list variable="icon" filter="[<urlDomain>] -[<urlDomain>]" emptyMessage=<<emptyIcon>> >
-            <$transclude tiddler="$:/core/images/globe"/>
-        </$list>
-    </svg>
+    <$list variable="icon" filter="[<urlDomain>] -[<urlDomain>]" emptyMessage=<<emptyIcon>> >
+        <$transclude tiddler="$:/core/images/globe"/>
+    </$list>
     <a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">
         <$text text=<<url>> />
     </a>
