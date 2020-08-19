@@ -1,8 +1,18 @@
 {
-    "description": "Empty edition",
+    "description": "Greenbits edition",
     "plugins": [
+        "tiddlywiki/filesystem",
+        "tiddlywiki/tiddlyweb",
+        "tiddlywiki/menubar",
+        "tiddlywiki/internals",
         "tiddlywiki/consent-banner",
-        "joshuafontany/oembed"
+        "tiddlywiki/googleanalytics",
+        "wikilabs/uni-link",
+        "flibbles/relink",
+        "joshuafontany/jsonmangler",
+        "joshuafontany/oembed",
+        "joshuafontany/greenbits",
+        "joshuafontany/pagetools"
     ],
     "themes": [
         "tiddlywiki/vanilla",

@@ -1,16 +1,16 @@
 created: 20200721012452073
 creator: Joshua Fontany
-modified: 20200721014812095
+modified: 20200819012155239
 modifier: Joshua Fontany
 title: $:/config/plugins/tiddlywiki/consent-banner/greeting-message
 
-! Oembed Demo Wiki
+! West Premium Demo Wiki
 
-The ''joshuafontany/oembed'' plugin loads outside html code into your wiki from approved (whitelisted) Oembed Providers. The rendered content is always embedded into an `<iframe>` element for security. As we cannot control the content of scripts loaded from third parties, we also require you to accept the "consent for cookies and analytics" from Tiddlywiki's ''consent-banner'' plugin (this modal).
+It is illegal to operate a motor vehicle while under the influence of marijuana.
 
-While no code using analytics or cookies is included in the ''joshuafontany/oembed'' plugin, in order for you embedded URLs to render you must both: //Accept// this consent-banner; and //Whitelist// a known Oembed Provider. See the //Control Panel// for the ''Oembed'' readme and options.
+You must be 21 or over to view our website or visit our store. 
 
-The following is the standard Tiddlywiki consent disclaimer:
+By clicking `Accept (21+)` below, you affirm that you are over 21 years of age, or older.
 
 ! Our use of cookies
 

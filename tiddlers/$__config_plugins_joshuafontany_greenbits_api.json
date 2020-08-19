@@ -1,0 +1,1432 @@
+{
+    "url": "https://api.greenbits.com/api/v1/",
+    "companies": [
+        {
+            "activated_at": "2019-03-22T19:34:06.000Z",
+            "active": true,
+            "active_at": "2018-06-20T07:00:00.000Z",
+            "addon_driver_license_scanning": false,
+            "addon_managed_metrc": false,
+            "auto_close_inventory": true,
+            "auto_logout": true,
+            "auto_print_receipts": true,
+            "below_cost_warning": true,
+            "billing_account_number": "55F8351E6F71",
+            "billing_cc_emails": null,
+            "billing_discount": null,
+            "billing_email": "segcorp.ls@gmail.com",
+            "billing_first_name": "Louis ",
+            "billing_frequency": 1,
+            "billing_last_name": "Segarra ",
+            "billing_phone_number": "2408765520",
+            "biotrack_ubi": null,
+            "city": "Rockaway",
+            "coachability": 6,
+            "combine_pricing_tiers": true,
+            "combine_pricing_tiers_strategy": 1,
+            "created_at": "2018-05-30T22:29:36.000Z",
+            "default_currency": "USD",
+            "default_person_group": "594c7659-e5f0-426f-b5a5-792413043ba4",
+            "default_rec_person_group": "cb6a5bab-65b8-43bb-88a4-de3bcfec3d6c",
+            "deposit_invoice_number": null,
+            "device_limit": 1,
+            "devices_used": 1,
+            "employee_tracking": true,
+            "express_activation": false,
+            "hardware_invoice_number": null,
+            "id": "71b919f5-f4cb-4531-8df8-ddb0581e02d8",
+            "is_delivery_enabled": false,
+            "license_discount_colorado_medical": false,
+            "license_number": "050-1004602AE08",
+            "license_type": 4,
+            "medical": true,
+            "migrate_loyalty_points": false,
+            "name": "West - Rockaway",
+            "onboarding_invoice_number": null,
+            "payment_integration_type": null,
+            "payments_enabled": false,
+            "places_enabled": false,
+            "places_settings": null,
+            "preorder_email": null,
+            "price_per_register": 120000,
+            "primary_email": "segcorp.ls@gmail.com",
+            "queue": false,
+            "recreational": true,
+            "register_labels": false,
+            "require_customer": false,
+            "salesforce_id": "0015000001VOx2AAAT",
+            "scale_integration": false,
+            "self_managed_compliance": false,
+            "sell_style": null,
+            "session_timeout": 0,
+            "shared_tills": true,
+            "skip_tax_period_validation": false,
+            "state": "OR",
+            "store_migration": false,
+            "street": "480 Hwy 101 South",
+            "suspended_on": null,
+            "technical_aptitude": 7,
+            "test_account": false,
+            "timezone": "America/Los_Angeles",
+            "tran_cloud_device_id": null,
+            "user_managed_compliance": false,
+            "verify_age": true,
+            "website_url": null,
+            "zip_code": "97136",
+            "person_group_ids": [
+                "cb6a5bab-65b8-43bb-88a4-de3bcfec3d6c",
+                "2d7d2b9d-d046-4324-8ed2-54786f63de4e",
+                "594c7659-e5f0-426f-b5a5-792413043ba4"
+            ],
+            "users": [
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2017-11-16T23:41:38.000Z",
+                    "email": "segcorp.ls@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Louis ",
+                    "id": "9b1e3d29-2673-4b16-ab71-8b8df5410780",
+                    "is_deleted": false,
+                    "last_name": "Segarra",
+                    "license_number": "8T3Z67",
+                    "name": "Louis  Segarra",
+                    "pin": "6066",
+                    "salesforce_id": "00350000031fOpgAAE",
+                    "username": "lsegarra",
+                    "state_credentials": [],
+                    "role_id": "6b85f8e4-bf2f-469a-a567-08ee7117b83c",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2018-05-07T16:06:51.000Z",
+                    "email": "brycebailey15@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Bryce",
+                    "id": "069e7fd8-c9ee-4a42-8e67-2c459f98b8eb",
+                    "is_deleted": false,
+                    "last_name": "Bailey",
+                    "license_number": null,
+                    "name": "Bryce Bailey",
+                    "pin": "5673",
+                    "salesforce_id": "0035000003BlW2XAAV",
+                    "username": "brycebailey",
+                    "state_credentials": [],
+                    "role_id": "e4e50ff4-5a7a-47e6-b815-d98c14fe15cf",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2018-05-31T16:18:04.000Z",
+                    "email": "CodyCrandell@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Cody ",
+                    "id": "f5d6912b-21c8-4cae-aadf-fa8d0fbfe24e",
+                    "is_deleted": false,
+                    "last_name": "Crandell",
+                    "license_number": "619PA8",
+                    "name": "Cody  Crandell",
+                    "pin": "6881",
+                    "salesforce_id": "0035000003D9qd8AAB",
+                    "username": "codycrandell",
+                    "state_credentials": [],
+                    "role_id": "e4e50ff4-5a7a-47e6-b815-d98c14fe15cf",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff"
+                    ],
+                    "budtender": false,
+                    "created_at": "2018-07-11T18:17:16.000Z",
+                    "email": "salsol710@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Salvador",
+                    "id": "b43dfbe9-d521-47b7-bade-c926c7a53eda",
+                    "is_deleted": false,
+                    "last_name": "Solis",
+                    "license_number": "1C557V",
+                    "name": "Salvador Solis",
+                    "pin": "7181",
+                    "salesforce_id": "0035000003FVriFAAT",
+                    "username": "ssolis",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-07-22T15:56:12.000Z",
+                    "email": "skybieberlove@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Sky ",
+                    "id": "03208fd4-bdac-4ebf-a2bb-7a40ad844333",
+                    "is_deleted": false,
+                    "last_name": "Wilberscheid",
+                    "license_number": "319MI0",
+                    "name": "Sky  Wilberscheid",
+                    "pin": "6003",
+                    "salesforce_id": "0035000003FWmldAAD",
+                    "username": "swilber",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-07-31T16:33:45.000Z",
+                    "email": "michellecy@gmail.com",
+                    "email_settings": {
+                        "notify_par": false,
+                        "notify_monthly_tax": false,
+                        "notify_auto_closed_inventory": false,
+                        "reporting_failures": true
+                    },
+                    "first_name": "Michelle",
+                    "id": "aada36c7-8d9a-4a14-8d88-d8c352777200",
+                    "is_deleted": false,
+                    "last_name": "Mele",
+                    "license_number": "p37r25",
+                    "name": "Michelle Mele",
+                    "pin": "0431",
+                    "salesforce_id": "0035000003FXSiFAAX",
+                    "username": "mmele",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-08-23T15:47:07.000Z",
+                    "email": "moblo231@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Will",
+                    "id": "d6138ddc-1297-4ba1-a86c-42e758113d4b",
+                    "is_deleted": false,
+                    "last_name": "Moblo",
+                    "license_number": "V36N84",
+                    "name": "Will Moblo",
+                    "pin": "6720",
+                    "salesforce_id": "0035000003I9ONVAA3",
+                    "username": "wmoblo",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-08-23T15:49:24.000Z",
+                    "email": "stargrlnspace@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Becky",
+                    "id": "121e20db-d4ac-467f-99fa-06331632c4ec",
+                    "is_deleted": false,
+                    "last_name": "Prater",
+                    "license_number": "6J5H37",
+                    "name": "Becky Prater",
+                    "pin": "8045",
+                    "salesforce_id": "0035000003I9ONVAA3",
+                    "username": "bprater",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2018-08-24T20:10:58.000Z",
+                    "email": "Act.Farmm@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Beth",
+                    "id": "340560fc-f26c-4e06-ac56-bc86aac404f3",
+                    "is_deleted": false,
+                    "last_name": "Ouellette",
+                    "license_number": null,
+                    "name": "Beth Ouellette",
+                    "pin": "5436",
+                    "salesforce_id": "0035000003HkfUwAAJ",
+                    "username": "bjo1021",
+                    "state_credentials": [],
+                    "role_id": "6b85f8e4-bf2f-469a-a567-08ee7117b83c",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-09-26T17:47:03.000Z",
+                    "email": "Katie2thed@gmail.com",
+                    "email_settings": {
+                        "notify_par": false,
+                        "notify_monthly_tax": false,
+                        "notify_auto_closed_inventory": false,
+                        "reporting_failures": true
+                    },
+                    "first_name": "Kathryn",
+                    "id": "af651565-0598-4d15-b39b-1f51d1a3f8f5",
+                    "is_deleted": false,
+                    "last_name": "Dewey",
+                    "license_number": null,
+                    "name": "Kathryn Dewey",
+                    "pin": "6347",
+                    "salesforce_id": "0035000003JQc1jAAD",
+                    "username": "kdewey",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2018-09-26T18:08:49.000Z",
+                    "email": "haleybrosig@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Haley",
+                    "id": "80681296-fc40-4a8c-8c11-c2f6ce3c9923",
+                    "is_deleted": false,
+                    "last_name": "Brosig",
+                    "license_number": null,
+                    "name": "Haley Brosig",
+                    "pin": "1581",
+                    "salesforce_id": "0035000003JQdSkAAL",
+                    "username": "haleybrosig",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2018-10-30T18:40:14.000Z",
+                    "email": "SanctaMaria83@gmail.com",
+                    "email_settings": null,
+                    "first_name": "brandy",
+                    "id": "23957568-1e99-4cb4-baa5-aeb9486dcc33",
+                    "is_deleted": false,
+                    "last_name": "morey",
+                    "license_number": null,
+                    "name": "brandy morey",
+                    "pin": "3031",
+                    "salesforce_id": null,
+                    "username": "bmorey",
+                    "state_credentials": [],
+                    "role_id": "e4e50ff4-5a7a-47e6-b815-d98c14fe15cf",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-03-14T17:37:27.000Z",
+                    "email": "kim.deisher@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Kimberly",
+                    "id": "07751b79-5748-4c53-a10e-530b6e4f1468",
+                    "is_deleted": false,
+                    "last_name": "Deisher",
+                    "license_number": "9MC608",
+                    "name": "Kimberly Deisher",
+                    "pin": "0768",
+                    "salesforce_id": "0031T00003M1kfZQAR",
+                    "username": "kdeisher",
+                    "state_credentials": [],
+                    "role_id": "0b7da5db-d412-4ab4-8ffd-f9bc40a9f211",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-03-19T16:09:24.000Z",
+                    "email": "karlye.dejoode10@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Karle",
+                    "id": "bf53b3c2-c72b-4847-a4c7-21301e8205e3",
+                    "is_deleted": false,
+                    "last_name": "Keeney",
+                    "license_number": "08mk85",
+                    "name": "Karle Keeney",
+                    "pin": "6242",
+                    "salesforce_id": "0031T00003M1nIsQAJ",
+                    "username": "kkeeney",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-03-23T17:15:08.000Z",
+                    "email": "feathershaker@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Megan",
+                    "id": "39cdef60-ba32-4acb-afda-7ad817e4d911",
+                    "is_deleted": false,
+                    "last_name": "Gill",
+                    "license_number": "L7712J",
+                    "name": "Megan Gill",
+                    "pin": "1167",
+                    "salesforce_id": "0031T00003M1qh2QAB",
+                    "username": "megang",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-03-25T00:19:00.000Z",
+                    "email": "dream.colorful@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Clarisse",
+                    "id": "152146a5-71c4-41d3-8dbf-9c987c6f8dbe",
+                    "is_deleted": false,
+                    "last_name": "Borja",
+                    "license_number": "001K21",
+                    "name": "Clarisse Borja",
+                    "pin": "8714",
+                    "salesforce_id": "0031T00003M1rKJQAZ",
+                    "username": "clarisseb",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-03-30T16:09:11.000Z",
+                    "email": "hayden7777@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Hayden",
+                    "id": "a6264e17-524b-46d1-846c-4d5a22595dd5",
+                    "is_deleted": false,
+                    "last_name": "Daine",
+                    "license_number": "U9X107",
+                    "name": "Hayden Daine",
+                    "pin": "4565",
+                    "salesforce_id": "0031T00003M1vLaQAJ",
+                    "username": "hdaine",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-04-02T17:22:21.000Z",
+                    "email": "briannahfirkus777@gmail.com",
+                    "email_settings": null,
+                    "first_name": "briannah",
+                    "id": "c27e45d1-fd6c-4fa7-bc81-acbc1fd83c76",
+                    "is_deleted": false,
+                    "last_name": "firkus",
+                    "license_number": "11MG41",
+                    "name": "briannah firkus",
+                    "pin": "2883",
+                    "salesforce_id": "0031T00003M1zKlQAJ",
+                    "username": "bfirkus",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-04-02T21:40:09.000Z",
+                    "email": "daryl.bell1@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Daryl",
+                    "id": "216a586e-7dff-4ca0-8dfb-061acd75050b",
+                    "is_deleted": false,
+                    "last_name": "Bell",
+                    "license_number": "PC8581",
+                    "name": "Daryl Bell",
+                    "pin": "5678",
+                    "salesforce_id": "0031T00003M1zfZQAR",
+                    "username": "dbell",
+                    "state_credentials": [],
+                    "role_id": "6b85f8e4-bf2f-469a-a567-08ee7117b83c",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-04-04T16:11:53.000Z",
+                    "email": "mattmeletis@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Matthew",
+                    "id": "86bd9684-c0ff-4be8-84cd-b3d308688e27",
+                    "is_deleted": false,
+                    "last_name": "Meletis",
+                    "license_number": "M142O2",
+                    "name": "Matthew Meletis",
+                    "pin": "2016",
+                    "salesforce_id": "0031T00003M20l4QAB",
+                    "username": "mmeletis",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-04-05T16:18:35.000Z",
+                    "email": "thelifeofcharlie8@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Charlette",
+                    "id": "a24123ad-c499-4dc1-a07d-fbabe8e18545",
+                    "is_deleted": false,
+                    "last_name": "Reed",
+                    "license_number": "8P9J90",
+                    "name": "Charlette Reed",
+                    "pin": "6628",
+                    "salesforce_id": "0031T00003M21RnQAJ",
+                    "username": "creed",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-04-07T23:03:55.000Z",
+                    "email": "devinfitzgerald2918@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Devin",
+                    "id": "4cd1c3de-a7e6-451e-9560-73d4ac529efa",
+                    "is_deleted": false,
+                    "last_name": "Fitzgerald",
+                    "license_number": "36d55a",
+                    "name": "Devin Fitzgerald",
+                    "pin": "3458",
+                    "salesforce_id": "0031T00003M0xMtQAJ",
+                    "username": "devinf",
+                    "state_credentials": [],
+                    "role_id": "e4e50ff4-5a7a-47e6-b815-d98c14fe15cf",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-04-11T05:58:53.000Z",
+                    "email": "dawnadonohue@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Dawna",
+                    "id": "fbae5a58-742f-4868-8d4d-04ab7db0413a",
+                    "is_deleted": false,
+                    "last_name": "Donohue",
+                    "license_number": "B3N435",
+                    "name": "Dawna Donohue",
+                    "pin": "1088",
+                    "salesforce_id": "0031T00003M24hXQAR",
+                    "username": "hotdawna",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-06-28T01:36:05.000Z",
+                    "email": "ramiskey.m@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Meghan",
+                    "id": "0d544071-93a7-49db-9b22-60c167bca371",
+                    "is_deleted": false,
+                    "last_name": "Ramiskey",
+                    "license_number": "2A632S",
+                    "name": "Meghan Ramiskey",
+                    "pin": "2136",
+                    "salesforce_id": "0031T00003OaSglQAF",
+                    "username": "mramiskey",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-07-21T19:13:58.000Z",
+                    "email": "johnmbg88@gmail.com",
+                    "email_settings": null,
+                    "first_name": "John",
+                    "id": "946b8cae-9668-4606-81a3-a0822af47ba5",
+                    "is_deleted": false,
+                    "last_name": "Hoban",
+                    "license_number": "ey7660",
+                    "name": "John Hoban",
+                    "pin": "5353",
+                    "salesforce_id": null,
+                    "username": "jhoban",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-08-02T01:11:28.000Z",
+                    "email": "sapphireangel12468@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Sapphire",
+                    "id": "7bc58fb0-dada-4ff7-a905-32e74a813973",
+                    "is_deleted": false,
+                    "last_name": "Smith",
+                    "license_number": "W5402W",
+                    "name": "Sapphire Smith",
+                    "pin": "3030",
+                    "salesforce_id": "0031T00003ObY2fQAF",
+                    "username": "ssmith",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-08-05T19:26:35.000Z",
+                    "email": "calandrahiggins@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Calandra",
+                    "id": "b1a89b63-080f-4a72-a91e-cb1919f85f2f",
+                    "is_deleted": false,
+                    "last_name": "Higgins",
+                    "license_number": "F3G628",
+                    "name": "Calandra Higgins",
+                    "pin": "8123",
+                    "salesforce_id": "0031T00003ObaP2QAJ",
+                    "username": "vhiggins",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-08-22T21:14:57.000Z",
+                    "email": "yamie196053@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Jamie",
+                    "id": "33a338c1-249f-46b3-9c6a-e8e72d1d929a",
+                    "is_deleted": false,
+                    "last_name": "Walth",
+                    "license_number": "1S2J25",
+                    "name": "Jamie Walth",
+                    "pin": "2418",
+                    "salesforce_id": null,
+                    "username": "jwalth",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-09-09T18:43:58.000Z",
+                    "email": "joshua.fontany@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Joshua",
+                    "id": "76b73c0b-1323-47fa-bd3e-d47b3714ee15",
+                    "is_deleted": false,
+                    "last_name": "Fontany",
+                    "license_number": "4F62M4",
+                    "name": "Joshua Fontany",
+                    "pin": "3122",
+                    "salesforce_id": null,
+                    "token": "_W_84jrewz8b17_hwg8Kpg",
+                    "username": "jfontany",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-10-14T17:50:04.000Z",
+                    "email": "geqfigz@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Caleb",
+                    "id": "00aa2deb-bab7-49fa-89fc-339b3983f543",
+                    "is_deleted": false,
+                    "last_name": "Figueroa",
+                    "license_number": "2N929M",
+                    "name": "Caleb Figueroa",
+                    "pin": "1126",
+                    "salesforce_id": null,
+                    "username": "cfigueroa1",
+                    "state_credentials": [],
+                    "role_id": "8b1dfcd4-07a9-49d6-b877-19cdce918038",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2019-10-21T22:19:50.000Z",
+                    "email": "taylorjshoberg@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Taylor",
+                    "id": "7804f67d-ee20-48cf-8bf5-87d1ec9ec633",
+                    "is_deleted": false,
+                    "last_name": "Shoberg",
+                    "license_number": "I60Y76",
+                    "name": "Taylor Shoberg",
+                    "pin": "4513",
+                    "salesforce_id": null,
+                    "username": "tshoberg",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-11-16T02:21:56.000Z",
+                    "email": "superzak6100@hotmail.com",
+                    "email_settings": null,
+                    "first_name": "Zachary",
+                    "id": "bb512534-6535-409e-8b08-7b2a39b04488",
+                    "is_deleted": false,
+                    "last_name": "Zwald",
+                    "license_number": "1247BA",
+                    "name": "Zachary Zwald",
+                    "pin": "6636",
+                    "salesforce_id": null,
+                    "username": "zzwald",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2019-12-19T17:38:31.000Z",
+                    "email": "rthresher79@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Rachel",
+                    "id": "c5c858dd-d81c-4717-bc20-046475362964",
+                    "is_deleted": false,
+                    "last_name": "Thresher",
+                    "license_number": null,
+                    "name": "Rachel Thresher",
+                    "pin": "4612",
+                    "salesforce_id": null,
+                    "username": "rthresher",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2020-01-21T00:44:05.000Z",
+                    "email": "dcgreen87@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Phillip",
+                    "id": "ce6c7850-6a46-41b3-be7a-ef565711ae1a",
+                    "is_deleted": false,
+                    "last_name": "Green",
+                    "license_number": "572CB4",
+                    "name": "Phillip Green",
+                    "pin": "3808",
+                    "salesforce_id": null,
+                    "username": "pgreen",
+                    "state_credentials": [],
+                    "role_id": "9d1d62a8-8afa-453a-b329-47f9c93aedba",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ],
+                    "budtender": false,
+                    "created_at": "2020-03-04T17:28:32.000Z",
+                    "email": "k8dono@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Kathi",
+                    "id": "a010f160-ec35-413d-b5a7-60ca68cda704",
+                    "is_deleted": false,
+                    "last_name": "Donohue",
+                    "license_number": "KathiDonohue093051",
+                    "name": "Kathi Donohue",
+                    "pin": "6183",
+                    "salesforce_id": null,
+                    "username": "k8dono",
+                    "state_credentials": [],
+                    "role_id": "0b7da5db-d412-4ab4-8ffd-f9bc40a9f211",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff",
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6",
+                        "71b919f5-f4cb-4531-8df8-ddb0581e02d8"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-03-08T05:37:43.000Z",
+                    "email": "levin.amanda96@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Amanda",
+                    "id": "31658a9c-2737-4499-946a-a5e008d7436e",
+                    "is_deleted": false,
+                    "last_name": "Levin",
+                    "license_number": "H996N2",
+                    "name": "Amanda Levin",
+                    "pin": "0031",
+                    "salesforce_id": null,
+                    "username": "alevin",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-03-23T22:56:23.000Z",
+                    "email": "veronica.mallery@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Veronica",
+                    "id": "724ab08d-d3c1-4d65-97e5-cd38808ca463",
+                    "is_deleted": false,
+                    "last_name": "Mallery",
+                    "license_number": "03V60G",
+                    "name": "Veronica Mallery",
+                    "pin": "4504",
+                    "salesforce_id": null,
+                    "username": "veronicamall",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "40cd4135-7df5-4746-8a56-5828865c2dff"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-04-01T18:30:30.000Z",
+                    "email": "sarah.dechrist@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Sarah",
+                    "id": "7ee84ccd-56df-47fb-b4c0-9b2dea732d27",
+                    "is_deleted": false,
+                    "last_name": "DeChristopher",
+                    "license_number": "H637A5",
+                    "name": "Sarah DeChristopher",
+                    "pin": "4035",
+                    "salesforce_id": null,
+                    "username": "sdechristopher",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-04-03T01:28:46.000Z",
+                    "email": "dioniciomuniz22@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Dionicio",
+                    "id": "61171abc-8513-4249-86ff-17ec34894671",
+                    "is_deleted": false,
+                    "last_name": "Muniz",
+                    "license_number": "025O5G",
+                    "name": "Dionicio Muniz",
+                    "pin": "6406",
+                    "salesforce_id": null,
+                    "username": "dmuniz",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-04-19T17:20:58.000Z",
+                    "email": "haamdabr171894@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Hailey",
+                    "id": "5d799958-13b4-4c31-be72-13f04cb0386d",
+                    "is_deleted": false,
+                    "last_name": "Davis-Brunton",
+                    "license_number": "4W86H0",
+                    "name": "Hailey Davis-Brunton",
+                    "pin": "5341",
+                    "salesforce_id": null,
+                    "username": "hdavisbrunton",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-05-20T16:54:40.000Z",
+                    "email": "sarasalerno17@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Sarah",
+                    "id": "a19ccdcb-cb60-4774-a217-187a5e3311fe",
+                    "is_deleted": false,
+                    "last_name": "Salerno",
+                    "license_number": "3V627W",
+                    "name": "Sarah Salerno",
+                    "pin": "7548",
+                    "salesforce_id": null,
+                    "username": "ssalerno",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-05-20T19:36:11.000Z",
+                    "email": "saraolson2016@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Sara",
+                    "id": "b5e95b47-82ff-4b3e-98b6-f8dea614064f",
+                    "is_deleted": false,
+                    "last_name": "Olson",
+                    "license_number": "27UJ92",
+                    "name": "Sara Olson",
+                    "pin": "1472",
+                    "salesforce_id": null,
+                    "username": "solson",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-07-23T01:11:44.000Z",
+                    "email": "alex.nicole.cameron@gmail.com",
+                    "email_settings": null,
+                    "first_name": "Alexandra",
+                    "id": "3e9c2a44-1f50-4a72-8227-7aa7a421c663",
+                    "is_deleted": false,
+                    "last_name": "Cameron",
+                    "license_number": "174EY2",
+                    "name": "Alexandra Cameron",
+                    "pin": "3755",
+                    "salesforce_id": null,
+                    "username": "acameron",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                },
+                {
+                    "accessible_company_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ],
+                    "budtender": true,
+                    "created_at": "2020-07-28T17:31:44.000Z",
+                    "email": "timothypowers412@yahoo.com",
+                    "email_settings": null,
+                    "first_name": "Tim",
+                    "id": "6275fdca-6045-48a6-aff3-503f9bfae34e",
+                    "is_deleted": false,
+                    "last_name": "Powers",
+                    "license_number": "SY8898",
+                    "name": "Tim Powers",
+                    "pin": "8664",
+                    "salesforce_id": null,
+                    "username": "tpowers",
+                    "state_credentials": [],
+                    "role_id": "4c25370a-3ce6-46cb-b7be-0f74f5d60ca1",
+                    "account_id": "03390bf7-eedf-4578-b3ba-4dc258f5db78",
+                    "accessible_location_ids": [
+                        "8dac9b2b-0de8-4236-91a3-5994e8484ec6"
+                    ]
+                }
+            ],
+            "license": {
+                "features": [
+                    "metrc",
+                    "async_split_lot",
+                    "configurable_carry_limit",
+                    "convert_inventory",
+                    "employee_sampling",
+                    "event_level_traceability",
+                    "traceability",
+                    "traceable_adjustments",
+                    "traceable_incoming_inventory",
+                    "traceable_package_merge",
+                    "traceable_package_close",
+                    "traceable_package_destroy",
+                    "traceable_return_inventory",
+                    "traceable_sales",
+                    "traceable_sample_inventory",
+                    "traceable_split_inventory",
+                    "inventory_audits",
+                    "medical",
+                    "medical_membership",
+                    "package_close",
+                    "package_labels",
+                    "package_management",
+                    "package_merge",
+                    "pricing_tiers",
+                    "print_grams_and_ounces_on_labels",
+                    "recreational",
+                    "split_lot",
+                    "unit_of_measure",
+                    "weight_based_inventory",
+                    "delivery_manifests",
+                    "configurable_labels",
+                    "configurable_label_id"
+                ],
+                "traceable_types": {
+                    "none": 0,
+                    "clone": 7,
+                    "concentrate": 8,
+                    "extract": 4,
+                    "flower": 1,
+                    "liquid_edible": 3,
+                    "seed": 9,
+                    "shake_trim": 10,
+                    "solid_edible": 2,
+                    "topical": 5,
+                    "hemp": 11
+                },
+                "recreational_limits": {
+                    "1": {
+                        "value": "1.0",
+                        "unit": 1
+                    },
+                    "2": {
+                        "value": "16.0",
+                        "unit": 1
+                    },
+                    "3": {
+                        "value": "72.0",
+                        "unit": 1
+                    },
+                    "4": {
+                        "value": "5.0",
+                        "unit": 0
+                    },
+                    "7": {
+                        "value": "4.0",
+                        "unit": 5
+                    },
+                    "8": {
+                        "value": "5.0",
+                        "unit": 0
+                    },
+                    "9": {
+                        "value": "10.0",
+                        "unit": 5
+                    },
+                    "10": {
+                        "value": "1.0",
+                        "unit": 1
+                    }
+                },
+                "medical_limits": {
+                    "1": {
+                        "value": "8.0",
+                        "unit": 1
+                    },
+                    "2": {
+                        "value": "16.0",
+                        "unit": 1
+                    },
+                    "3": {
+                        "value": "72.0",
+                        "unit": 1
+                    },
+                    "4": {
+                        "value": "5.0",
+                        "unit": 0
+                    },
+                    "7": {
+                        "value": "4.0",
+                        "unit": 5
+                    },
+                    "8": {
+                        "value": "5.0",
+                        "unit": 0
+                    },
+                    "9": {
+                        "value": "10.0",
+                        "unit": 5
+                    },
+                    "10": {
+                        "value": "8.0",
+                        "unit": 1
+                    }
+                },
+                "recreational_equivalent_limits": {
+                    "8": 4,
+                    "10": 1
+                },
+                "medical_equivalent_limits": {
+                    "8": 4,
+                    "10": 1
+                },
+                "medical_potency_limits": {},
+                "recreational_potency_limits": {},
+                "metrc_categories": [],
+                "medical_weight_to_potency_limits": {},
+                "recreational_weight_to_potency_limits": {},
+                "medical_weight_to_weight_limits": {},
+                "recreational_weight_to_weight_limits": {},
+                "adjustment_reasons": [
+                    {
+                        "id": 112,
+                        "value": 112,
+                        "name": "During License-to-License Transfer"
+                    },
+                    {
+                        "id": 113,
+                        "value": 113,
+                        "name": "Entry Error"
+                    },
+                    {
+                        "id": 114,
+                        "value": 114,
+                        "name": "Moisture Loss/Gain"
+                    },
+                    {
+                        "id": 115,
+                        "value": 115,
+                        "name": "Package Material"
+                    },
+                    {
+                        "id": 116,
+                        "value": 116,
+                        "name": "Plant Death"
+                    },
+                    {
+                        "id": 118,
+                        "value": 118,
+                        "name": "Scale Variance"
+                    },
+                    {
+                        "id": 119,
+                        "value": 119,
+                        "name": "Spoilage"
+                    },
+                    {
+                        "id": 120,
+                        "value": 120,
+                        "name": "Theft"
+                    },
+                    {
+                        "id": 121,
+                        "value": 121,
+                        "name": "Trade Sample"
+                    },
+                    {
+                        "id": 122,
+                        "value": 122,
+                        "name": "Waste"
+                    }
+                ]
+            },
+            "receipt_preference": {
+                "id": "9606dd56-8f56-448a-a810-d14d720ca8ee",
+                "store_name": "West - Rockaway",
+                "show_address": true,
+                "phone": null,
+                "email": null,
+                "website": null,
+                "extra_text": null,
+                "logo_url": null,
+                "logo_file_name": null,
+                "logo_content_type": null,
+                "logo_fingerprint": null
+            },
+            "label_preference": null
+        }
+    ]
+}
