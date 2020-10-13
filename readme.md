@@ -8,7 +8,7 @@ Manually or automatically generate embeddable html from user supplied urls. This
 
 For a server to automatically generate the API requests, this plugin requires running TiddlyWiki on Node.js with the Bob plugin (or through Bob.exe). When run with Bob it also requires installing the oembetter npm package from within your TiddlyWiki5 directory (or cloning the 'oembetter' package locally and creating a global link by using `npm link` in the oembetter directory and `npm link oembetter` in the tiddlywiki5 directory).
 
-If Bob and oembetter are not available, the plugin will prompt the user with a form to call the correct API. This makes the user into the *server* ;) .
+If Bob and oembetter are not available, the plugin will prompt the user with a form to call the correct API. If this is not available (for example, Facebook and Instagram now require all API requests to be "token authenticated"), the user can visit the website and enter the website suppied "embeddable HTML" code.  This makes the user into the *server* ;) .
 
 Docs & Using Oembed
 ============

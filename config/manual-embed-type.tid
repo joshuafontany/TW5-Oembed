@@ -1,0 +1,4 @@
+title: $:/config/plugins/joshuafontany/oembed/manual-embed-type
+list: www.facebook.com m.facebook.com facebook.com www.instagram.com m.instagram.com instagram.com
+
+[[$:/config/plugins/joshuafontany/oembed/manual-embed-type]contains<urlDomain>then[$:/plugins/joshuafontany/oembed/manual-embed-html]else[$:/plugins/joshuafontany/oembed/manual-embed-json]]

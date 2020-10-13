@@ -10,10 +10,14 @@ tags: [[$:/tags/Stylesheet]]
   padding-bottom: 0.5em;
 }
 
-.tc-embedded-link > svg { fill: #d79921; height: 22px; width: 22px; }
+.tc-embedded-link > button > svg {
+  fill: <<colour primary>> !important;
+  height: 22px !important;
+  width: 22px !important;\
+}
 
 .tc-embedded {
-  {{$:/plugins/joshuafontany/oembed/controlpanel/styles##tc-embedded}}
+  border: 2px solid <<colour primary>>;
 }
 
 .tc-embedded-responsive {
@@ -51,5 +55,5 @@ tags: [[$:/tags/Stylesheet]]
 }
 
 .tc-embedded-default {
-  {{$:/plugins/joshuafontany/oembed/controlpanel/styles##tc-embedded-default}}
+  padding-top: 64em; /* default iframe height */
 }

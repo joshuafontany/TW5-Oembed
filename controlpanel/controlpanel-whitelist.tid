@@ -4,10 +4,10 @@ tags: $:/tags/ControlPanel/Oembed
 caption: {{$:/language/ControlPanel/Oembed/Whitelist/Caption}}
 
 \define addProvider()
-<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="$(provider)$" />
+<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="[[$(provider)$]]" />
 \end
 \define removeProvider()
-<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="-$(provider)$" />
+<$action-listops $tiddler="$:/config/plugins/joshuafontany/oembed/whitelist" $field="list" $subfilter="-[[$(provider)$]]" />
 \end
 
 {{$:/language/ControlPanel/Oembed/Whitelist/Hint}}
@@ -24,7 +24,7 @@ caption: {{$:/language/ControlPanel/Oembed/Whitelist/Caption}}
 
 <ul class="provider-list inactive">
 <li>''Inactive''</li>
-<$list variable="provider" filter="[list[$:/config/plugins/joshuafontany/oembed/whitelist!!oembed-providers]]">
+<$list variable="provider" filter="[list[$:/config/plugins/joshuafontany/oembed/providers]] -[list[$:/config/plugins/joshuafontany/oembed/whitelist]]">
 <li class="provider-control">
 <$button class="tc-btn-invisible tc-tiddlylink" actions=<<addProvider>> >{{$:/core/images/chevron-up}} ''<$text text=<<provider>> />''</$button>
 </li>

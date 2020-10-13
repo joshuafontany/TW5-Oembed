@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.3",
   "type": "application/json",
   "title": "$:/plugins/joshuafontany/oembed",
   "plugin-type": "plugin",

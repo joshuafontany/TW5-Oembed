@@ -1,0 +1,14 @@
+title: $:/config/plugins/joshuafontany/oembed/icons
+type: application/json
+
+{
+    "Instagram": "$:/icons/fontawesome5/brands/instagram-square",
+    "Twitter": "$:/icons/fontawesome5/brands/twitter",
+    "Facebook": "$:/icons/fontawesome5/brands/facebook-square",
+    "Flickr": "$:/icons/fontawesome5/brands/flickr",
+    "Scribd": "$:/icons/fontawesome5/brands/scribd",
+    "Vimeo": "$:/icons/fontawesome5/brands/vimeo",
+    "YouTube": "$:/icons/fontawesome5/brands/youtube",
+    "Soundcloud": "$:/icons/fontawesome5/brands/soundcloud",
+    "Reddit": "$:/icons/fontawesome5/brands/reddit",
+    "Deviantart.com": "$:/icons/fontawesome5/brands/deviantart"

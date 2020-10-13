@@ -16,7 +16,7 @@ This handles embed messages sent to the node process.
 
 exports.platforms = ["node"];
 
-if($tw.node) {
+if($tw.node && $tw.Bob) {
   //const oembetter = require("oembetter")();
   $tw.nodeMessageHandlers = $tw.nodeMessageHandlers || {};
   $tw.Bob.Shared = require('$:/plugins/OokTech/Bob/SharedFunctions.js');

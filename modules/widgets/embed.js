@@ -232,16 +232,19 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
     }
     //Parse the URL
     this.requestURL = ($tw.node)? urls.parse(this.target): new URL(this.target);
+    this.requestProvider = "";
     this.requestEndpoint = "";
         for (let e = 0; e < $tw.oembed.endpoints.length; e++) {
           var endpoint = $tw.oembed.endpoints[e];
           var domainMatch = (this.requestURL.hostname.indexOf(endpoint.domain) !== -1);
           if (domainMatch && this.requestURL.pathname.match(endpoint.path)) {
+            this.requestProvider = endpoint.name;
             this.requestEndpoint = endpoint.endpoint;
           }
           if (this.requestEndpoint !== "") break;
         }
     this.setVariable("requestEndpoint", this.requestEndpoint);
+    this.setVariable("requestProvider", this.requestProvider);
     // component encode the url for the stateTitle
     this.stateTitle = "$:/oembed/url/"+encodeURIComponent(this.target);
     this.stateExists = this.wiki.tiddlerExists(this.stateTitle);
@@ -266,7 +269,7 @@ The maxwidth attribute is interpreted as a number of pixels, and does not need t
       this.refreshSelf();
       return true;
     } else {
-      return false;		
+      return this.refreshChildren(changedTiddlers);		
     }
   };
   

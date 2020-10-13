@@ -1,0 +1,26 @@
+tags: 
+title: $:/plugins/joshuafontany/oembed/manual-embed-html
+caption: HTML
+tooltip: Manually embed an HTML block from a website's "embed" option.
+
+\define saveState()
+<$action-setfield $tiddler=<<stateTitle>> $field="type" $value="application/json" />
+<$action-setfield $tiddler=<<stateTitle>> $index="html" $value={{$:/state/oembed/manual-request}} />
+<$action-setfield $tiddler=<<stateTitle>> $index="width" $value={{$:/state/oembed/manual-request!!width}} />
+<$action-setfield $tiddler=<<stateTitle>> $index="height" $value={{$:/state/oembed/manual-request!!height}} />
+<$action-setfield $tiddler=<<stateTitle>> $index="url" $value=<<url>> />
+<$action-deletetiddler $tiddler="$:/state/oembed/manual-request" />
+\end
+
+* Visit the ''Target'' link: <a href=<<url>> class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer"><$text text=<<url>>/></a>
+* Find the website's "Embed" menu option.
+* Copy and paste the "embeddable HTML" into the HTML input box.
+* If available, enter the Width and Height for the given embed.
+* Then click <$button class="tc-btn-invisible tc-tiddlylink" actions=<<saveState>> >Save!</$button>
+
+''Width:'' <$edit-text tiddler="$:/state/oembed/manual-request" field="width" default="" size="10"/>
+''Height:'' <$edit-text tiddler="$:/state/oembed/manual-request" field="height" default="" size="10"/>
+
+''HTML''
+<$edit-text tiddler="$:/state/oembed/manual-request" tag="textarea" default="" class="manual-embed-edit" autoHeight="yes" minHeight="200px"/>
+

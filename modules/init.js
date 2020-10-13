@@ -22,7 +22,7 @@ exports.startup = function() {
 	if($tw.node) var urls = require('url');
 	var endpoints = [], oembetterWhitelist = [],
 	whitelist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist"),
-	providerlist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/whitelist", "oembed-providers"),
+	providerlist =  $tw.wiki.getTiddlerList("$:/config/plugins/joshuafontany/oembed/providers"),
 	providers = JSON.parse($tw.wiki.getTiddlerText("$:/plugins/joshuafontany/oembed/providers/oembed", "[]"));
 	try {
 		for (let p = 0; p < providers.length; p++) {
@@ -84,7 +84,7 @@ exports.startup = function() {
 			console.log(error.toString());
 		}
 	}
-	$tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/whitelist","oembed-providers",undefined,$tw.utils.stringifyList(providerlist));
+	$tw.wiki.addTiddler(new $tw.Tiddler({fields:{title: "$:/config/plugins/joshuafontany/oembed/providers", list: $tw.utils.stringifyList(providerlist)}}, $tw.wiki.getCreationFields()));
 	function replacer(name, val) {
 		// convert RegExp to string
 		if ( val && val.constructor === RegExp ) {
@@ -93,8 +93,8 @@ exports.startup = function() {
 			return val; // return as is
 		}
 	};
-	$tw.wiki.setText("$:/config/plugins/joshuafontany/oembed/endpoints","text",undefined,JSON.stringify(endpoints, replacer, 2));
-	if($tw.node) {
+	$tw.wiki.addTiddler(new $tw.Tiddler({fields:{title: "$:/config/plugins/joshuafontany/oembed/endpoints", type: "application/json", text: JSON.stringify(endpoints, replacer, 2)}}, $tw.wiki.getCreationFields()));
+	if($tw.node && $tw.Bob) {
 		if(!$tw.modules.titles["$:/plugins/OokTech/Bob/ServerSide.js"]) {
 			$tw.Bob.logger.log("The plugin 'joshuafontany/oembed' requires the 'OokTech/Bob' plugin to be installed when running on node.js.");
 		} else { 
